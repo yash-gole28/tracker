@@ -1,0 +1,121 @@
+{
+    "user":[
+        {
+            "name": "yash",
+            "email": "yash@gmail.com",
+            "balance":10000
+        }
+    ],
+    "expenses":[
+        {"date":"1" , "category":"food" , "amount": 500,"amountLeft":9500},
+        {"date":"1" , "category":"bills" , "amount": 1000,"amountLeft":8500},
+        {"date":"2" , "category":"travel" , "amount": 1500,"amountLeft":7000},
+        {"date":"2" , "category":"other" , "amount": 200,"amountLeft":6800},
+        {"date":"2" , "category":"groceries" , "amount": 300,"amountLeft":6500},
+        {"date":"3" , "category":"other" , "amount": 50,"amountLeft":6450},
+        {"date":"4" , "category":"food" , "amount": 450,"amountLeft":6000},
+        {"date":"4" , "category":"rent" , "amount": 2000,"amountLeft":4000}
+    ],
+    "monthData":[
+        {
+            "date":1,
+            "spends":500
+
+        },
+        {
+            "date":2,
+            "spends":100
+
+        },
+        {
+            "date":3,
+            "spends":200
+
+        },
+        {
+            "date":1,
+            "spends":700
+
+        },
+        {
+            "date":1,
+            "spends":500
+
+        },
+        {
+            "date":1,
+            "spends":100
+
+        },
+        {
+            "date":1,
+            "spends":500
+
+        },
+        {
+            "date":1,
+            "spends":600
+
+        },
+        {
+            "date":1,
+            "spends":100
+
+        },
+        {
+            "date":1,
+            "spends":0
+
+        },
+        {
+            "date":1,
+            "spends":30
+
+        },
+        {
+            "date":1,
+            "spends":100
+
+        },
+        {
+            "date":1,
+            "spends":75
+
+        },
+        {
+            "date":1,
+            "spends":90
+
+        },
+        {
+            "date":1,
+            "spends":800
+
+        },
+        {
+            "date":1,
+            "spends":90
+
+        },
+        {
+            "date":1,
+            "spends":800
+
+        },
+        {
+            "date":1,
+            "spends":700
+
+        },
+        {
+            "date":1,
+            "spends":1200
+
+        },
+        {
+            "date":1,
+            "spends":30
+
+        }
+    ]
+}

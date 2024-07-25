@@ -23,7 +23,7 @@ const Navbar = () => {
     setOpen(newOpen);
   };
   const DrawerList = (
-    <Box sx={{ width: 250,minHeight:'100vh' ,backgroundColor:'black',color:'white'}} role="presentation" onClick={toggleDrawer(false)}>
+    <Box sx={{ width: 250, minHeight: '100vh', backgroundColor: '#fbe9d0', color: '#244855' }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -36,7 +36,7 @@ const Navbar = () => {
           </ListItem>
         ))}
       </List>
-      <Divider sx={{backgroundColor:'white'}}/>
+      <Divider sx={{ backgroundColor: 'white' }} />
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -53,25 +53,17 @@ const Navbar = () => {
   );
   return (
     <Box>
-      <AppBar sx={{backgroundColor:'black'}}>
+      <AppBar sx={{ backgroundColor: '#FBE9D0', color: '#244855' }}>
         <Toolbar>
-        <Button sx={{color:'white'}} onClick={toggleDrawer(true)}><MenuIcon /></Button>
+          <Button sx={{ color: '#244855'}} onClick={toggleDrawer(true)}><MenuIcon /></Button>
           <Drawer open={open} onClose={toggleDrawer(false)}>
             {DrawerList}
           </Drawer>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow:1 }}>
             News
           </Typography>
-          
-          <Button color="inherit" onClick={()=>router('/login')}>Login</Button>
+
+          <Button color="inherit" onClick={() => router('/login')}>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
