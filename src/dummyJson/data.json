@@ -3,7 +3,7 @@
         {
             "name": "yash",
             "email": "yash@gmail.com",
-            "balance":10000
+            "income":10000
         }
     ],
     "expenses":[
@@ -24,7 +24,7 @@
         },
         {
             "date":2,
-            "spends":100
+            "spends":1000
 
         },
         {
@@ -114,8 +114,15 @@
         },
         {
             "date":1,
-            "spends":30
+            "spends":300
 
         }
+    ],
+    "totals":[
+        {"category":"food" , "amount":950},
+        {"category":"bills", "amount":1000},
+        {"category":"travel","amount":1500},
+        {"category":"groceries", "amount":300}  
     ]
+
 }

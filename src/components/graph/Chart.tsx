@@ -21,11 +21,15 @@ const Chart = () => {
         { data: spendsArray },
         
       ]}
-      height={290}
-      width={500}
+      height={390}
+      width={700}
     //   width={400}
-      sx={{width:'50vw'}}
-      xAxis={[{ data: arr, scaleType:'band' }]}
+      sx={{color:'grey'}}
+      xAxis={[{ data: arr, scaleType:'band', colorMap: {
+        type: 'piecewise',
+        thresholds: [new Date(2021, 1, 1), new Date(2023, 1, 1)],
+        colors: ['rgb(32, 30, 67)'],
+      } }]}
       margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
     />
     </div>
