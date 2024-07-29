@@ -6,9 +6,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import AddIcon from '@mui/icons-material/Add';
-import { Input, InputBase, TextField, Typography } from '@mui/material';
-export default function AddIncome() {
-  const [open, setOpen] = React.useState(false);
+import { Input, Typography } from '@mui/material';
+
+const AddExpense = () => {
+
+    const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,12 +19,11 @@ export default function AddIncome() {
   const handleClose = () => {
     setOpen(false);
   };
-
   return (
     <React.Fragment>
-      <Button disableTouchRipple sx={{ color: 'rgb(32, 30, 67)',':hover':{backgroundColor:'transparent'},padding:'0px',margin:'0px' }} variant='text' onClick={handleClickOpen}>
+    <Button disableTouchRipple sx={{ color: 'rgb(32, 30, 67)',':hover':{backgroundColor:'transparent'} }} variant='text' onClick={handleClickOpen}>
         <AddIcon />
-        Add Income
+        Add Expense
       </Button>
       <Dialog
         open={open}
@@ -33,12 +34,14 @@ export default function AddIncome() {
         <Typography variant='h5'>Enter Amount</Typography>
         </DialogTitle>
         <DialogContent sx={{width:'400px',display:'flex',justifyContent:'center',backgroundColor:'rgb(254, 255, 210)'}}>
-        <Input disableUnderline type='number' sx={{backgroundColor:'white',borderRadius:'8px',paddingLeft:'10px'}} />
+        <Input disableUnderline type='number' sx={{backgroundColor:'white',borderRadius:'8px',paddingLeft:'10px',border:'1px solid rgb(255, 191, 120)'}} />
         </DialogContent>
-        <DialogActions sx={{width:'400px',display:'flex',justifyContent:'center'}}>
+        <DialogActions sx={{width:'400px',display:'flex',justifyContent:'center' ,backgroundColor:'rgb(255, 125, 41)'}}>
         <AddIcon /><Typography>Add</Typography>
         </DialogActions>
       </Dialog>
-    </React.Fragment>
-  );
+  </React.Fragment>
+  )
 }
+
+export default AddExpense

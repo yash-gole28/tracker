@@ -23,13 +23,13 @@ const Navbar = () => {
   const router = useNavigate()
   return (
     <Box>
-      <AppBar sx={{ backgroundColor: 'rgb(105, 79, 142)', color: 'white' }}>
-        <Toolbar>
+      <AppBar sx={{ backgroundColor: 'white',boxShadow:'0px 0.5px 4px rgb(238, 237, 235)', color: 'rgb(32, 30, 67)'}}>
+        <Toolbar sx={{display:'flex',justifyContent:'space-between' }}>
 
           <Draw/>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
-          </Typography>
+          </Typography> */}
           <Button color="inherit" onClick={() => router('/login')}>Login</Button>
         </Toolbar>
       </AppBar>

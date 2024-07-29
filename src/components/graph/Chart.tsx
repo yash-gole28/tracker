@@ -3,35 +3,40 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import userData from './../../dummyJson/data.json'
 
 const Chart = () => {
-    const [expenses , setExpenses] = useState<any>({user:[]})
-    const spendsArray = userData.monthData.map(item => item.spends);
-    const arr = []
-    let day = 1
-    for(let i = 0 ; i<31 ; i++){
-        arr.push(String(day))
-        day++
-    }
-   useEffect(()=>{
-    setExpenses(userData)
-   },[])
+  const [expenses, setExpenses] = useState<any>({ user: [] })
+  const spendsArray = userData.monthData.map(item => item.spends);
+  const arr = []
+  let day = 1
+  for (let i = 0; i < userData.monthData.length; i++) {
+    arr.push(String(day))
+    day++
+  }
+  //  useEffect(()=>{
+  //   setExpenses(userData)
+  //  },[])
   return (
     <div>
-         <BarChart
-      series={[
-        { data: spendsArray },
+      <BarChart
+        borderRadius={10}
+        series={[
+          { data: spendsArray ,label:'daily spends',color:'rgb(64, 93, 114)'},
+          
+
+        ]}
+        height={350}
+        width={900}
+        //   width={400}
+        sx={{ color: 'rgb(147, 145, 133)' }}
         
-      ]}
-      height={390}
-      width={700}
-    //   width={400}
-      sx={{color:'grey'}}
-      xAxis={[{ data: arr, scaleType:'band', colorMap: {
-        type: 'piecewise',
-        thresholds: [new Date(2021, 1, 1), new Date(2023, 1, 1)],
-        colors: ['rgb(32, 30, 67)'],
-      } }]}
-      margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-    />
+        xAxis={[{
+          data: arr,label:'date',scaleType: 'band', colorMap: {
+            type: 'piecewise',
+            thresholds: [new Date(2021, 1, 1), new Date(2023, 1, 1)],
+            colors: ['rgb(64, 93, 114)']
+          }
+        }]}
+        margin={{ top: 40, bottom: 40, left: 40, right: 10 }}
+      />
     </div>
   )
 }
