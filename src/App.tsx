@@ -4,7 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
-import AddIncome from './components/dialoguebox/AddIncome';
+import Profile from './pages/profile/Profile';
+// import AddIncome from './pages/income/AddIncome';
+
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/profile' element={<Profile/>} />
+        
+        {/* <Route path='/income' element={<AddIncome/>} /> */}
       </Routes>
     </div>
   );

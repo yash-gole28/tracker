@@ -1,9 +1,6 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Grid, Stack, Typography } from '@mui/material'
 import React from 'react'
 import dummy from './../../dummyJson/data.json'
-import AddIncome from '../dialoguebox/AddIncome'
-import AddExpense from '../dialoguebox/AddExpense'
-import Chart from '../graph/Chart'
 interface MyComponentProps {
     totalSpends: number
 }
@@ -11,43 +8,53 @@ interface MyComponentProps {
 const Dashboard: React.FC<MyComponentProps> = ({ totalSpends }) => {
 
     return (
-        <Box>
-            <Box>
+        <Box sx={{width:'100vw'}}>
+            {/* <Box>
                 <Typography variant='h4'>
                     Hello {dummy.user[0].name} !!
                 </Typography>
-            </Box>
-            <Stack sx={{ margin: '2rem 2rem', display: 'flex', justifyContent: 'center',alignItems:'center', flexWrap: 'wrap' }} direction='row' spacing={2} >
-                <Box flex={2} sx={{ backgroundColor: 'white', maxWidth: '300px', height: '12rem', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center',alignItems:'start',padding:'1.5rem',"&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.01)', transition: '200ms ease-in-out' } }}>
-                    <Typography variant='h6' sx={{ color: 'rgb(32, 30, 67)',fontWeight:'400',fontSize:'15px' }}>
-                        Income 
+            </Box> */}
+            <Grid container sx={{mt:".5rem", display: 'flex', justifyContent:'space-around', alignItems: 'center', flexWrap: 'wrap' }} direction='row' >
+                <Grid item xs={5} md={2.5} sx={{border: '2px solid rgb(209, 216, 197)',mb:'1rem',backgroundColor: 'white',width:{md:"300px",xs:'200px'}, maxWidth: '300px', height:{xs:'6rem',md:'8rem'}, borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', padding: '1.5rem', "&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.02)', transition: '200ms ease-in-out' } }}>
+                    <Typography variant='h6' sx={{ color: 'rgb(32, 30, 67)', fontWeight: '400', fontSize:{sx:'13px',md:'15px'}}}>
+                        Income
                     </Typography>
-                    <Typography variant='h3' sx={{ color: 'rgb(32, 30, 67)',fontWeight:'500' }} >
+                    <Typography sx={{ color: 'rgb(32, 30, 67)', fontSize:{xs:'28px',md:'40px'}, fontWeight: '500' }} >
                         {dummy.user[0].income}
                     </Typography>
-                    <AddIncome />
-                </Box>
-                <Box flex={2} sx={{ backgroundColor: 'white', maxWidth: '300px', height: '12rem', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center',alignItems:'start',padding:'1.5rem',"&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.01)', transition: '200ms ease-in-out' } }}>
-                    <Typography variant='h6' sx={{ color: 'rgb(47, 54, 69)',fontWeight:'400',fontSize:'15px' }}>
+                    {/* <AddIncome /> */}
+                </Grid>
+                <Grid item  xs={5} md={2.5} sx={{border: '2px solid rgb(209, 216, 197)',mb:'1rem',backgroundColor: 'white',width:{md:"300px",xs:'200px'}, maxWidth: '300px', height:{xs:'6rem',md:'8rem'}, borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', padding: '1.5rem', "&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.02)', transition: '200ms ease-in-out' } }}>
+                    <Typography variant='h6' sx={{ color: 'rgb(47, 54, 69)', fontWeight: '400', fontSize: '15px' ,textAlign:'start' }}>
                         Total Spents this month
                     </Typography>
-                    <Typography variant='h3' sx={{ color: 'rgb(32, 30, 67)',fontWeight:'500' }} >
+                    <Typography sx={{ color: 'rgb(32, 30, 67)', fontSize:{xs:'28px',md:'40px'}, fontWeight: '500' }} >
                         {totalSpends}
                     </Typography>
-                    <AddExpense/>
-                </Box>
-                <Box flex={2} sx={{ backgroundColor: 'white', maxWidth: '300px', height: '12rem', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center',alignItems:'start',padding:'1.5rem', "&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.01)', transition: '200ms ease-in-out' } }}>
-                    <Typography variant='h6' sx={{ color: 'rgb(32, 30, 67)' ,fontWeight:'400',fontSize:'15px'}}>
+                    {/* <AddExpense /> */}
+                </Grid>
+                <Grid item xs={5} md={2.5} sx={{border: '2px solid rgb(209, 216, 197)',mb:'1rem',backgroundColor: 'white', maxWidth: '300px',width:{md:"300px",xs:'200px'}, height:{xs:'6rem',md:'8rem'}, borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', padding: '1.5rem', "&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.02)', transition: '200ms ease-in-out' } }}>
+                    <Typography variant='h6' sx={{ color: 'rgb(32, 30, 67)', fontWeight: '400', fontSize: '15px' }}>
 
-                        Balance-
+                        Balance
                     </Typography>
-                    <Typography variant='h3' sx={{ color: 'rgb(32, 30, 67)' ,fontWeight:'500'}}>
+                    <Typography sx={{ color: 'rgb(32, 30, 67)', fontSize:{xs:'28px',md:'40px'},fontWeight: '500' }}>
                         {dummy.user[0].income - totalSpends}
                     </Typography>
-                   
-                </Box>
-                
-            </Stack>
+
+                </Grid>
+                <Grid item xs={5} md={2.5}sx={{border: '2px solid rgb(209, 216, 197)',mb:'1rem',backgroundColor: 'white', maxWidth: '300px',width:{md:"300px",xs:'200px'}, height:{xs:'6rem',md:'8rem'}, borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'start', padding: '1.5rem', "&:hover": { boxShadow: '0px 2px 4px rgb(117, 134, 148)', transform: 'scale(1.02)', transition: '200ms ease-in-out' } }}>
+                    <Typography variant='h6' sx={{ color: 'rgb(32, 30, 67)', fontWeight: '400', fontSize: '15px' }}>
+
+                        Savings
+                    </Typography>
+                    <Typography sx={{ color: 'rgb(32, 30, 67)', fontSize:{xs:'28px',md:'40px'}, fontWeight: '500' }}>
+                        {dummy.user[0].income - totalSpends}
+                    </Typography>
+
+                </Grid>
+
+            </Grid>
         </Box>
     )
 }

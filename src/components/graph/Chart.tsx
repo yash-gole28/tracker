@@ -15,7 +15,7 @@ const Chart = () => {
   //   setExpenses(userData)
   //  },[])
   return (
-    <div>
+    <>
       <BarChart
         borderRadius={10}
         series={[
@@ -23,10 +23,9 @@ const Chart = () => {
           
 
         ]}
-        height={350}
-        width={900}
+        // height={350}
         //   width={400}
-        sx={{ color: 'rgb(147, 145, 133)' }}
+        sx={{ color: 'rgb(147, 145, 133)'}}
         
         xAxis={[{
           data: arr,label:'date',scaleType: 'band', colorMap: {
@@ -37,7 +36,7 @@ const Chart = () => {
         }]}
         margin={{ top: 40, bottom: 40, left: 40, right: 10 }}
       />
-    </div>
+    </>
   )
 }
 

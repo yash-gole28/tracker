@@ -10,10 +10,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import { useNavigate } from 'react-router-dom';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
 export default function Draw() {
   const [open, setOpen] = React.useState(false);
+  const router = useNavigate()
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -23,12 +25,32 @@ export default function Draw() {
     <Box sx={{ width: 250, backgroundColor: 'white', height: '100vh', color: 'rgb(32, 30, 67)' }} role="presentation" onClick={toggleDrawer(false)}>
       <List>
         <ListItem disablePadding>
-          <ListItemButton >
+          <ListItemButton onClick={()=>router('/')}>
             <ListItemIcon >
               {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
               <MailIcon sx={{ color: 'rgb(32, 30, 67)' }} />
             </ListItemIcon>
-            <ListItemText primary='Menu' />
+            <ListItemText primary='Dashboard' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton onClick={()=>router('/income')} >
+            <ListItemIcon >
+              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+              {/* <MailIcon sx={{ color: 'rgb(32, 30, 67)' }} /> */}
+              
+            </ListItemIcon>
+            <ListItemText primary='Add Income' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton >
+            <ListItemIcon >
+              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+              {/* <MailIcon sx={{ color: 'rgb(32, 30, 67)' }} /> */}
+            
+            </ListItemIcon>
+            <ListItemText primary='' />
           </ListItemButton>
         </ListItem>
 
@@ -37,10 +59,10 @@ export default function Draw() {
       <List>
 
         <ListItem disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={()=>router('/profile')}>
             <ListItemIcon>
               {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-
+              <PermIdentityIcon/>
             </ListItemIcon>
             <ListItemText primary='Profile' />
           </ListItemButton>

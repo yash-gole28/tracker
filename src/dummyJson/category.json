@@ -1,8 +1,11 @@
-[
-    "bills",
-    "rent",
-    "travel",
-    "food",
-    "groceries",
-    "others"
-]
+{
+
+   "amountSpent":[
+    {"category":"bills", "amount":1000}
+    ,{"category":"rent", "amount":2000}
+    ,{"category":"travel", "amount":1000}
+    ,{"category":"food", "amount":500}
+   ,{"category":"groceries", "amount":1200}
+    ,{"category":"others", "amount":1500}
+   ]
+}

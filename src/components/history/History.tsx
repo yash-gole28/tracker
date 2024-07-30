@@ -13,14 +13,15 @@ const History = () => {
     const arr = dummy.expenses
     arr.reverse()
     return (
-        <TableContainer sx={{ backgroundColor:'white',border:'2px solid rgb(209, 216, 197)',borderRadius:'8px',width:'fit-content',margin:'auto',padding:'1.3rem'}}>
+        <TableContainer sx={{ backgroundColor:'white',border:'2px solid rgb(209, 216, 197)',borderRadius:'8px',width:'100%',margin:'auto',padding:'1.4rem'}}>
       <Typography variant='h6'sx={{textAlign:'start'}}>Latest History</Typography>
-      <Table sx={{ minWidth: 650 ,width:900}} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell><Typography variant='h6' sx={{fontSize:'16px'}}>Category</Typography></TableCell>
             <TableCell align="right"><Typography variant='h6' sx={{fontSize:'16px'}}>Date</Typography></TableCell>
             <TableCell align="right"><Typography variant='h6' sx={{fontSize:'16px'}}>Amount</Typography></TableCell>
+            <TableCell align="right"><Typography variant='h6' sx={{fontSize:'16px'}}>Balance</Typography></TableCell>
             {/* <TableCell align="right">Carbs&nbsp;(g)</TableCell>
             <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
           </TableRow>

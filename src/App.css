@@ -5,6 +5,8 @@
 }
 .App {
   text-align: center;
+  width: 100%;
+  overflow: hidden;
   /* background-color: rgb(43, 37, 35); */
   /* background-color:  #CADCFC; */
 }
@@ -25,3 +27,8 @@
 /* .box{
   background-color: rgb(212, 212, 212);
 } */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
