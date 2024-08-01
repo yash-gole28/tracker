@@ -1,31 +1,45 @@
 import * as React from 'react';
-
 import { PieChart } from '@mui/x-charts/PieChart';
-import dummy from './../../dummyJson/category.json'
+import dummy from './../../dummyJson/category.json';
+import { useTheme, useMediaQuery } from '@mui/material';
 
 const Pie = () => {
-  // const amtData = dummy.amountSpent.map(item=>({id:0,value:item.amount,label:item.category}))
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
   const amountData = dummy.amountSpent.map(item => ({
-    id: 0, // Assuming id might be available in dummy data; adjust as needed
+    id: item.category,
     value: item.amount,
     label: item.category
   }));
-  const pallete = ['rgb(255, 76, 76)','rgb(239, 90, 111)','rgb(83, 100, 147)','rgb(255, 222, 77)','rgb(212, 189, 172)','rgb(255, 170, 170)']
+
+  const palette = [
+    'rgb(255, 76, 76)',
+    'rgb(239, 90, 111)',
+    'rgb(83, 100, 147)',
+    'rgb(255, 222, 77)',
+    'rgb(212, 189, 172)',
+    'rgb(255, 170, 170)'
+  ];
+
   return (
-    <>
     <PieChart
-    colors={pallete}
       series={[
         {
-          data: amountData,paddingAngle:2,innerRadius:20
+          data: amountData,
+          paddingAngle: 2,
+          innerRadius: isSmallScreen ? 0 : 20 
         }
       ]}
-      width={500}
-      height={200}
-      
+      colors={palette}
+      width={isSmallScreen ? 300 : 500} 
+      height={isSmallScreen ? 200 : 300} 
+      sx={{ 
+        fontSize: isSmallScreen ? '0.8rem' : '1rem'
+      }}
+   
     />
-    </>
-  )
-}
+  );
+};
 
-export default Pie
+export default Pie;

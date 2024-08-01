@@ -20,25 +20,95 @@ export default function AddIncome() {
 
   return (
     <React.Fragment>
-      <Button disableTouchRipple sx={{ color: 'rgb(32, 30, 67)',':hover':{backgroundColor:'transparent'},padding:'0px',margin:'0px' }} variant='text' onClick={handleClickOpen}>
-        <AddIcon />
-        Add Income
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        sx={{}}
+    <Button
+      disableTouchRipple
+      sx={{
+        color: '#34495e', // Use Modern Charcoal
+        ':hover': { backgroundColor: '#2c3e50' }, // Secondary color for hover
+        fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
+        padding: { xs: '6px 12px', sm: '8px 16px' }, // Responsive padding
+        display: 'flex',
+        alignItems: 'center'
+      }}
+      variant='text'
+      onClick={handleClickOpen}
+    >
+      <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' }, color: '#34495e' }} />
+      <Typography variant='button' sx={{ marginLeft: '8px', color: '#34495e' }}>
+        Add Expense
+      </Typography>
+    </Button>
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      maxWidth="sm"
+      fullWidth
+      sx={{
+        '& .MuiDialog-paper': {
+          backgroundColor: 'white', // Dialog background color
+          borderRadius: '8px',
+          padding: '16px',
+          boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+        }
+      }}
+    >
+      <DialogTitle
+        sx={{
+        
+          color: '#2c3e50',
+          textAlign: 'center',
+          padding: '16px',
+          borderRadius: '8px 8px 0 0',
+          fontSize: { xs: '20px', sm: '24px' } // Responsive font size
+        }}
       >
-        <DialogTitle sx={{width:'400px',display:'flex',justifyContent:'center',backgroundColor:'rgb(254, 255, 210)'}}>
-        <Typography variant='h5'>Enter Amount</Typography>
-        </DialogTitle>
-        <DialogContent sx={{width:'400px',display:'flex',justifyContent:'center',backgroundColor:'rgb(254, 255, 210)'}}>
-        <Input disableUnderline type='number' sx={{backgroundColor:'white',borderRadius:'8px',paddingLeft:'10px'}} />
-        </DialogContent>
-        <DialogActions sx={{width:'400px',display:'flex',justifyContent:'center'}}>
-        <AddIcon /><Typography>Add</Typography>
-        </DialogActions>
-      </Dialog>
-    </React.Fragment>
+        Enter Amount
+      </DialogTitle>
+      <DialogContent
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '16px',
+          backgroundColor: 'white', // Dialog content background color
+          borderRadius: '0 0 8px 8px',
+        }}
+      >
+        <Input
+          disableUnderline
+          type='number'
+          sx={{
+            backgroundColor: 'white',
+            borderRadius: '8px',
+            paddingLeft: '10px',
+            border: `1px solid #2c3e50`, // Secondary color for border
+            width: '100%',
+            fontSize: { xs: '16px', sm: '18px' }, // Responsive font size
+          }}
+        />
+      </DialogContent>
+      <DialogActions
+        sx={{
+          justifyContent: 'center',
+          padding: '16px',
+          borderRadius: '0 0 8px 8px',
+        }}
+      >
+        <Button
+          onClick={handleClose}
+          sx={{
+            color: '#2c3e50',
+            width:'fit-content',
+            fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
+            ':hover': { backgroundColor: '#34495e' } // Modern Charcoal for hover
+          }}
+        >
+          <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' } }} />
+          <Typography variant='button' sx={{ marginLeft: '8px' }}>
+            Add
+          </Typography>
+        </Button>
+      </DialogActions>
+    </Dialog>
+  </React.Fragment>
   );
 }

@@ -6,48 +6,178 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import dummy from './../../dummyJson/data.json'
-import { Typography } from '@mui/material';
+import dummy from './../../dummyJson/data.json';
+import { Typography, useTheme, useMediaQuery } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+const PrimaryButton = styled(Button)(({ theme }) => ({
+  backgroundColor: '#2c3e50', // Deep Charcoal
+  color: '#ffffff', // White text
+  borderRadius: '8px',
+  '&:hover': {
+    backgroundColor: '#34495e', // Slightly lighter Charcoal
+  },
+}));
 
 const History = () => {
-    const arr = dummy.expenses
-    arr.reverse()
-    return (
-        <TableContainer sx={{ backgroundColor:'white',border:'2px solid rgb(209, 216, 197)',borderRadius:'8px',width:'100%',margin:'auto',padding:'1.4rem'}}>
-      <Typography variant='h6'sx={{textAlign:'start'}}>Latest History</Typography>
-      <Table aria-label="simple table">
+  const router = useNavigate()
+  const theme = useTheme(); 
+  const arr:any = []
+
+  for(let i = 0 ;i<5 ; i++){
+      arr.push(dummy.expenses[i])
+  }
+
+  return (
+    <TableContainer
+      component={Paper}
+      sx={{
+        backgroundColor: 'white',
+        // border: `2px solid ${theme.palette.divider}`,
+        borderRadius: '8px',
+        width: '100%',
+        position:'relative',
+        // margin: 'auto',
+        padding: '1.4rem',
+        boxShadow: '0px 0px 0px solid rgb(255, 255, 255)',
+        overflowX: 'auto', // Ensures table is scrollable on small screens
+      }}
+    >
+       <PrimaryButton onClick={()=>router('/history')} sx={{position:'absolute',top:'15px',right:'20px'}}>History</PrimaryButton>
+      <Typography
+        variant="h6"
+        sx={{
+          textAlign:{xs:'start',md:'center'},
+          marginBottom: '1rem',
+          fontWeight: '600',
+          color: theme.palette.text.primary,
+          fontSize: { xs: '1rem', sm: '1.2rem' }, // Responsive font size
+        }}
+      >
+        Latest History
+      </Typography>
+     
+      <Table>
         <TableHead>
           <TableRow>
-            <TableCell><Typography variant='h6' sx={{fontSize:'16px'}}>Category</Typography></TableCell>
-            <TableCell align="right"><Typography variant='h6' sx={{fontSize:'16px'}}>Date</Typography></TableCell>
-            <TableCell align="right"><Typography variant='h6' sx={{fontSize:'16px'}}>Amount</Typography></TableCell>
-            <TableCell align="right"><Typography variant='h6' sx={{fontSize:'16px'}}>Balance</Typography></TableCell>
-            {/* <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
+            <TableCell>
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontSize: { xs: '14px', sm: '16px' },
+                  fontWeight: '600',
+                  color: theme.palette.text.primary,
+                }}
+              >
+                Category
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontSize: { xs: '14px', sm: '16px' },
+                  fontWeight: '600',
+                  color: theme.palette.text.primary,
+                }}
+              >
+                Date
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontSize: { xs: '14px', sm: '16px' },
+                  fontWeight: '600',
+                  color: theme.palette.text.primary,
+                }}
+              >
+                Amount
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  fontSize: { xs: '14px', sm: '16px' },
+                  fontWeight: '600',
+                  color: theme.palette.text.primary,
+                }}
+              >
+                Balance
+              </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          
-            {
-                arr.map((e)=>(
-                    <TableRow
-              sx={{ '&:last-child td, &:last-child th': { border: 0 }}}
+          {arr.map((e:any, index:number) => (
+            <TableRow
+              key={index}
+              sx={{
+                '&:last-child td, &:last-child th': { border: 0 },
+                '&:hover': {
+                  backgroundColor: theme.palette.action.hover,
+                  cursor: 'pointer',
+                },
+              }}
             >
               <TableCell component="th" scope="row">
-              <Typography variant='h6'sx={{fontSize:'15px'}}> {e.category}</Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '14px', sm: '15px' },
+                    fontWeight: '500',
+                    color: theme.palette.text.secondary,
+                  }}
+                >
+                  {e.category}
+                </Typography>
               </TableCell>
-              <TableCell align="right">{e.date}</TableCell>
-              <TableCell sx={{color:'red'}} align="right"><Typography variant='h6'sx={{fontSize:'15px'}}>&#8377;{e.amount}</Typography></TableCell>
-              <TableCell align="right"><Typography> {e.amountLeft} </Typography></TableCell>
-              {/* <TableCell align="right"></TableCell> */}
+              <TableCell align="right">
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '14px', sm: '15px' },
+                    fontWeight: '500',
+                    color: theme.palette.text.secondary,
+                  }}
+                >
+                  {e.date}
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '14px', sm: '15px' },
+                    fontWeight: '500',
+                    color: 'red',
+                  }}
+                >
+                  &#8377;{e.amount}
+                </Typography>
+              </TableCell>
+              <TableCell align="right">
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '14px', sm: '15px' },
+                    fontWeight: '500',
+                    color: theme.palette.text.secondary,
+                  }}
+                >
+                  {e.amountLeft}
+                </Typography>
+              </TableCell>
             </TableRow>
-                ))
-            }
- 
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
-    )
-}
+  );
+};
 
-export default History
+export default History;

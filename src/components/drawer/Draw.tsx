@@ -8,73 +8,95 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import AddIcon from '@mui/icons-material/Add';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import HomeIcon from '@mui/icons-material/Home';
+import LoginIcon from '@mui/icons-material/Login';
 
 export default function Draw() {
   const [open, setOpen] = React.useState(false);
-  const router = useNavigate()
+  const router = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
 
   const DrawerList = (
-    <Box sx={{ width: 250, backgroundColor: 'white', height: '100vh', color: 'rgb(32, 30, 67)' }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
+    <Box
+      sx={{
+        width: 230,
+        backgroundColor: '#34495e', // Modern Charcoal
+        height: '100vh',
+        color: '#ffffff', // White text
+      }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+    >
+      <List sx={{ paddingLeft: '1rem' }}>
         <ListItem disablePadding>
-          <ListItemButton onClick={()=>router('/')}>
-            <ListItemIcon >
-              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              <MailIcon sx={{ color: 'rgb(32, 30, 67)' }} />
+          <ListItemButton onClick={() => router('/')}>
+            <ListItemIcon>
+              <HomeIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
             <ListItemText primary='Dashboard' />
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={()=>router('/income')} >
-            <ListItemIcon >
-              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              {/* <MailIcon sx={{ color: 'rgb(32, 30, 67)' }} /> */}
-              
-            </ListItemIcon>
-            <ListItemText primary='Add Income' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton >
-            <ListItemIcon >
-              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              {/* <MailIcon sx={{ color: 'rgb(32, 30, 67)' }} /> */}
-            
-            </ListItemIcon>
-            <ListItemText primary='' />
-          </ListItemButton>
-        </ListItem>
-
-      </List>
-      <Divider sx={{ backgroundColor: "rgb(32, 30, 67)" }} />
-      <List>
-
-        <ListItem disablePadding>
-          <ListItemButton onClick={()=>router('/profile')}>
+          <ListItemButton onClick={() => router('/history')}>
             <ListItemIcon>
-              {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              <PermIdentityIcon/>
+              <AddIcon sx={{ color: '#ffffff' }} />
+            </ListItemIcon>
+            <ListItemText primary='Transactions' />
+          </ListItemButton>
+        </ListItem>
+      </List>
+      <Divider sx={{ backgroundColor: '#ffffff' }} />
+      <List sx={{ paddingLeft: '1rem' }}>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => router('/profile')}>
+            <ListItemIcon>
+              <PermIdentityIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
             <ListItemText primary='Profile' />
           </ListItemButton>
         </ListItem>
-
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => router('/settings')}>
+            <ListItemIcon>
+              <SettingsIcon sx={{ color: '#ffffff' }} />
+            </ListItemIcon>
+            <ListItemText primary='Settings' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => router('/logout')}>
+            <ListItemIcon>
+              <LoginIcon sx={{ color: '#ffffff' }} />
+            </ListItemIcon>
+            <ListItemText primary='Login' />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => router('/logout')}>
+            <ListItemIcon>
+              <LogoutIcon sx={{ color: '#ffffff' }} />
+            </ListItemIcon>
+            <ListItemText primary='Logout' />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
 
   return (
     <div>
-      <Button sx={{ color: 'rgb(32, 30, 67)' }} onClick={toggleDrawer(true)}><MenuIcon /></Button>
+      <Button sx={{ color: '#ffffff' }} onClick={toggleDrawer(true)}>
+        <MenuIcon />
+      </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
