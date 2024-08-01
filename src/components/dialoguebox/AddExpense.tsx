@@ -5,8 +5,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import AddIcon from '@mui/icons-material/Add';
-import { Input, Typography } from '@mui/material';
+import { Input, MenuItem, Select, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
+import dummy from './../../dummyJson/category.json'
 
 const AddExpense = () => {
   const [open, setOpen] = React.useState(false);
@@ -26,8 +27,8 @@ const AddExpense = () => {
       <Button
         disableTouchRipple
         sx={{
-          color: '#34495e', // Use Modern Charcoal
-          ':hover': { backgroundColor: '#2c3e50' }, // Secondary color for hover
+          color: '#34495e',
+          ':hover': { backgroundColor: '#2c3e50', color: '#ffffff' },
           fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
           padding: { xs: '6px 12px', sm: '8px 16px' }, // Responsive padding
           display: 'flex',
@@ -36,8 +37,8 @@ const AddExpense = () => {
         variant='text'
         onClick={handleClickOpen}
       >
-        <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' }, color: '#34495e' }} />
-        <Typography variant='button' sx={{ marginLeft: '8px', color: '#34495e' }}>
+        <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' } }} />
+        <Typography variant='button' sx={{ marginLeft: '8px' }}>
           Add Expense
         </Typography>
       </Button>
@@ -57,7 +58,7 @@ const AddExpense = () => {
       >
         <DialogTitle
           sx={{
-          
+
             color: '#2c3e50',
             textAlign: 'center',
             padding: '16px',
@@ -70,6 +71,7 @@ const AddExpense = () => {
         <DialogContent
           sx={{
             display: 'flex',
+            flexDirection:'column',
             justifyContent: 'center',
             padding: '16px',
             backgroundColor: 'white', // Dialog content background color
@@ -78,6 +80,7 @@ const AddExpense = () => {
         >
           <Input
             disableUnderline
+            placeholder='Enter amount'
             type='number'
             sx={{
               backgroundColor: 'white',
@@ -86,8 +89,28 @@ const AddExpense = () => {
               border: `1px solid #2c3e50`, // Secondary color for border
               width: '100%',
               fontSize: { xs: '16px', sm: '18px' }, // Responsive font size
+
             }}
           />
+
+          <Select
+            variant='standard'
+            disableUnderline
+            defaultValue={0}
+            sx={{ backgroundColor: 'white',
+              borderRadius: '8px',
+              paddingLeft: '10px',
+              border: `1px solid #2c3e50`, // Secondary color for border
+              width: '100%',
+              fontSize: { xs: '16px', sm: '18px' }, }}
+            size='small'
+          >
+            {dummy.category.map((e)=>(
+               <MenuItem value={e}>{e}</MenuItem>
+            ))}
+           
+            
+          </Select>
         </DialogContent>
         <DialogActions
           sx={{
@@ -100,7 +123,7 @@ const AddExpense = () => {
             onClick={handleClose}
             sx={{
               color: '#2c3e50',
-              width:'fit-content',
+              width: 'fit-content',
               fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
               ':hover': { backgroundColor: '#34495e' } // Modern Charcoal for hover
             }}

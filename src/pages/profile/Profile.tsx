@@ -13,7 +13,7 @@ const Profile = () => {
                 <Box sx={{ width: { xs: '100%', md: '30%' }, maxWidth: '400px' }}>
                     <Box sx={{ padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
                         <AccountCircleIcon sx={{ fontSize: { xs: '100px', md: '120px' }, color: '#B0BEC5' }} />
-                        <Typography variant='h4' sx={{ fontWeight: 'bold', marginBottom: '10px', fontSize: { xs: '1.5rem', md: '2rem' } }}>
+                        <Typography variant='h4' sx={{ fontWeight: 'bold', marginBottom: '10px', fontSize: { xs: '1rem', md: '1.5rem' } }}>
                             Yash Gole
                         </Typography>
                         <Typography variant='body1' sx={{ color: '#757575', fontSize: { xs: '0.875rem', md: '1rem' } }}>
@@ -23,8 +23,8 @@ const Profile = () => {
                             9695233456
                         </Typography>
                     </Box>
-                    <Box sx={{ marginTop: '20px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
-                        <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '1rem', md: '1.25rem' } }}>Father's Name</Typography>
+                    <Box sx={{ textAlign:'start',marginTop: '20px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
+                        <Typography variant='h6' sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, marginBottom: '10px' }}>Father's Name</Typography>
                         <Input
                             disabled
                             disableUnderline
@@ -34,14 +34,14 @@ const Profile = () => {
                         />
                     </Box>
                 </Box>
-                <Box sx={{ width: { xs: '100%', md: '70%' }, maxWidth: '800px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
-                    <Typography variant='h5' sx={{ marginBottom: '20px', fontWeight: 'bold', fontSize: { xs: '1.5rem', md: '2rem' } }}>Edit Profile</Typography>
+                <Box sx={{ textAlign:'start',width: { xs: '100%', md: '70%' }, maxWidth: '800px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
+                    <Typography variant='h5' sx={{ marginBottom: '20px', fontWeight: 'bold', fontSize: { xs: '1rem', md: '1.5rem' } }}>Edit Profile</Typography>
                     <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, flexWrap: 'wrap', gap: '20px' }}>
                         <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                             <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Username</Typography>
                             <Input
                                 disableUnderline
-                                sx={{ width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             />
                         </Box>
@@ -50,7 +50,7 @@ const Profile = () => {
                             <Input
                                 disableUnderline
                                 type="email"
-                                sx={{ width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             />
                         </Box>
@@ -59,7 +59,7 @@ const Profile = () => {
                             <Input
                                 disableUnderline
                                 type="number"
-                                sx={{ width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             />
                         </Box>
@@ -68,7 +68,7 @@ const Profile = () => {
                             <Input
                                 disableUnderline
                                 type="date"
-                                sx={{ width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             />
                         </Box>
@@ -78,7 +78,7 @@ const Profile = () => {
                                 variant='standard'
                                 disableUnderline
                                 defaultValue={0}
-                                sx={{ width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             >
                                 <MenuItem value={0}>Male</MenuItem>
@@ -91,7 +91,7 @@ const Profile = () => {
                             <Input
                                 disableUnderline
                                 type="date"
-                                sx={{ width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                sx={{ width: '100%', fontSize: {xs: '0.875rem', md: '1rem'}, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             />
                         </Box>

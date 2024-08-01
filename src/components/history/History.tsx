@@ -45,7 +45,7 @@ const History = () => {
         overflowX: 'auto', // Ensures table is scrollable on small screens
       }}
     >
-       <PrimaryButton onClick={()=>router('/history')} sx={{position:'absolute',top:'15px',right:'20px'}}>History</PrimaryButton>
+      
       <Typography
         variant="h6"
         sx={{
@@ -176,6 +176,7 @@ const History = () => {
           ))}
         </TableBody>
       </Table>
+      <PrimaryButton onClick={()=>router('/history')} sx={{position:'absolute',top:'15px',right:'20px'}}>History</PrimaryButton>
     </TableContainer>
   );
 };

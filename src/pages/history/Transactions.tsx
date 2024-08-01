@@ -7,70 +7,37 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import dummy from './../../dummyJson/data.json';
-import { Typography, useTheme } from '@mui/material';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import { Box, Typography, useTheme } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import AddExpense from '../../components/dialoguebox/AddExpense';
+import Navbar from '../../components/navbar/Navbar';
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  width: '100%',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
-
+// Transactions component
 const Transactions = () => {
   const theme = useTheme();
   const [searchQuery, setSearchQuery] = React.useState<string>('');
+  const [selectedCategory, setSelectedCategory] = React.useState<string | undefined>(undefined);
   const arr = dummy.expenses;
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value.toLowerCase());
-  };
-
-  const filteredData = arr.filter((item) =>
-    item.category.toLowerCase().includes(searchQuery) ||
-    item.date.toLowerCase().includes(searchQuery) ||
-    item.amount.toString().includes(searchQuery) ||
-    item.amountLeft.toString().includes(searchQuery)
-  );
+  // Filter data based on selected category and search query
+  const filteredData = arr.filter((item) => {
+    const matchesCategory = selectedCategory ? item.category === selectedCategory : true;
+    const matchesQuery = searchQuery ? (
+      item.category.toLowerCase().includes(searchQuery) ||
+      item.date.toLowerCase().includes(searchQuery) ||
+      item.amount.toString().includes(searchQuery) ||
+      item.amountLeft.toString().includes(searchQuery)
+    ) : true;
+    return matchesCategory && matchesQuery;
+  });
 
   return (
     <>
+      <Navbar />
+      <Box sx={{ position: 'absolute', right: '10px', top: '100px', zIndex: '5' }}>
+        <AddExpense />
+      </Box>
       <TableContainer
         component={Paper}
         sx={{
@@ -78,6 +45,7 @@ const Transactions = () => {
           borderRadius: '8px',
           width: '100%',
           position: 'relative',
+          top: '70px',
           padding: '1.4rem',
           boxShadow: '0px 0px 0px solid rgb(255, 255, 255)',
           overflowX: 'auto',
@@ -97,17 +65,24 @@ const Transactions = () => {
           History
         </Typography>
 
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-            value={searchQuery}
-            onChange={handleSearchChange}
-          />
-        </Search>
+        <Autocomplete
+          freeSolo
+          id="category-autocomplete"
+          disableClearable
+          options={arr.map((option) => option.category)}
+          value={selectedCategory || ''} // Convert undefined to empty string
+          onChange={(event, newValue) => setSelectedCategory(newValue || undefined)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Select Category"
+              InputProps={{
+                ...params.InputProps,
+                type: 'search',
+              }}
+            />
+          )}
+        />
 
         <Table>
           <TableHead>

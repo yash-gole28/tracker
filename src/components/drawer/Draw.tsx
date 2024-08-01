@@ -73,7 +73,7 @@ export default function Draw() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/logout')}>
+          <ListItemButton onClick={() => router('/login')}>
             <ListItemIcon>
               <LoginIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
@@ -81,7 +81,7 @@ export default function Draw() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/logout')}>
+          <ListItemButton onClick={() => router('/')}>
             <ListItemIcon>
               <LogoutIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
