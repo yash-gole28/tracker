@@ -9,7 +9,7 @@ const Profile = () => {
     return (
         <Box sx={{ backgroundColor: '#F4F4F9', minHeight: '100vh' }}>
             <Navbar />
-            <Box sx={{ display: 'flex', paddingTop: '80px', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'center', gap: '20px' }}>
+            <Box sx={{ display: 'flex', paddingTop: '80px', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'center', gap: '20px',paddingBottom:'2rem' }}>
                 <Box sx={{ width: { xs: '100%', md: '30%' }, maxWidth: '400px' }}>
                     <Box sx={{ padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
                         <AccountCircleIcon sx={{ fontSize: { xs: '100px', md: '120px' }, color: '#B0BEC5' }} />
@@ -24,14 +24,26 @@ const Profile = () => {
                         </Typography>
                     </Box>
                     <Box sx={{ textAlign:'start',marginTop: '20px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
-                        <Typography variant='h6' sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, marginBottom: '10px' }}>Father's Name</Typography>
+                        <Typography variant='h6' sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, marginBottom: '10px' }}> Income </Typography>
                         <Input
                             disabled
                             disableUnderline
-                            value='Subhash'
+                            value='10000'
+                            sx={{ color: '#333333',marginBottom:'1rem', fontWeight: '500', width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                            size='small'
+                        />
+                        <Typography variant='h6' sx={{ fontSize: { xs: '0.875rem', md: '1rem' }, marginBottom: '10px' }}> Balance </Typography>
+                        <Input
+                            disabled
+                            disableUnderline
+                            value='2000'
                             sx={{ color: '#333333', fontWeight: '500', width: '100%', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                             size='small'
                         />
+                         <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px' }}>
+                <AddIncome />
+                <AddExpense />
+            </Box>
                     </Box>
                 </Box>
                 <Box sx={{ textAlign:'start',width: { xs: '100%', md: '70%' }, maxWidth: '800px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
@@ -87,10 +99,28 @@ const Profile = () => {
                             </Select>
                         </Box>
                         <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
-                            <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Date of Birth</Typography>
+                            <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Address line 1</Typography>
                             <Input
                                 disableUnderline
-                                type="date"
+                                type="text"
+                                sx={{ width: '100%', fontSize: {xs: '0.875rem', md: '1rem'}, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                size='small'
+                            />
+                        </Box>
+                        <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
+                            <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Address line 2</Typography>
+                            <Input
+                                disableUnderline
+                                type="text"
+                                sx={{ width: '100%', fontSize: {xs: '0.875rem', md: '1rem'}, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                                size='small'
+                            />
+                        </Box>
+                        <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
+                            <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Postal Code</Typography>
+                            <Input
+                                disableUnderline
+                                type="number"
                                 sx={{ width: '100%', fontSize: {xs: '0.875rem', md: '1rem'}, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                                 size='small'
                             />
@@ -98,10 +128,7 @@ const Profile = () => {
                     </Box>
                 </Box>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '40px' }}>
-                <AddIncome />
-                <AddExpense />
-            </Box>
+           
         </Box>
     );
 }

@@ -23,14 +23,15 @@ const Chart = () => {
         {
           data: spendsArray,
           label: 'Daily Spends',
-          color: 'rgb(64, 93, 114)', // Aligns with the theme
+          color: 'rgb(64, 93, 114)',
         },
       ]}
       sx={{
-        color: 'rgb(32, 30, 67)', // Updated to match the text color
-        height: '100%', // Ensures chart takes full height of the container
-        width: '100%', // Ensures chart takes full width of the container
-        backgroundColor: 'white', // Background color to make the chart stand out
+        color: 'rgb(32, 30, 67)',
+        height: '100%', 
+        width: '100%',
+        backgroundColor: 'white',
+        minHeight:{xs:'200px',md:'300px'}
       }}
       xAxis={[
         {

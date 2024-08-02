@@ -12,18 +12,19 @@ interface MyComponentProps {
 
 const Dashboard: React.FC<MyComponentProps> = ({ totalSpends }) => {
     return (
-        <Box sx={{ width: '100vw', backgroundColor: '#F4F4F9', padding: '1rem' }}>
+        <Box sx={{ width: '100%', backgroundColor: '#F4F4F9' }}>
             <Grid container sx={{
                 display: 'flex',
-                justifyContent: { xs: 'space-around', md: 'center' },
+                justifyContent: { xs: 'space-evenly', md: 'space-between' },
                 alignItems: 'center',
                 flexWrap: 'wrap',
-                gap: '1rem'
+                marginBottom:'.5rem'
+                // gap: '1rem'
             }} direction='row'>
-                <Grid item xs={5} md={2.5} sx={{
+                <Grid item xs={5.5} md={2.8} sx={{
                     border: '2px solid #E0E0E0',
                     backgroundColor: '#FFFFFF',
-                    width: { md: '300px', xs: '200px' },
+                    width: { md: '300px', xs: '230px' },
                     height: { xs: '6rem', md: '8rem' },
                     borderRadius: '8px',
                     display: 'flex',
@@ -57,10 +58,10 @@ const Dashboard: React.FC<MyComponentProps> = ({ totalSpends }) => {
                         <AttachMoneyIcon sx={{ fontSize: { xs: '30px', md: '45px' }, color:"#2c3e50" ,":hover":{color:'#34495e'} }} />
                     </Box>
                 </Grid>
-                <Grid item xs={5} md={2.5} sx={{
+                <Grid item xs={5.5} md={2.8} sx={{
                     border: '2px solid #E0E0E0',
                     backgroundColor: '#FFFFFF',
-                    width: { md: '300px', xs: '200px' },
+                    width: { md: '300px', xs: '230px' },
                     height: { xs: '6rem', md: '8rem' },
                     borderRadius: '8px',
                     display: 'flex',
@@ -95,10 +96,10 @@ const Dashboard: React.FC<MyComponentProps> = ({ totalSpends }) => {
                         <LocalMallIcon sx={{ fontSize: { xs: '30px', md: '45px' }, color:"#2c3e50" ,":hover":{color:'#34495e'} }} />
                     </Box>
                 </Grid>
-                <Grid item xs={5} md={2.5} sx={{
+                <Grid item xs={5.5} md={2.8} sx={{
                     border: '2px solid #E0E0E0',
                     backgroundColor: '#FFFFFF',
-                    width: { md: '300px', xs: '200px' },
+                    width: { md: '300px', xs: '230px' },
                     height: { xs: '6rem', md: '8rem' },
                     borderRadius: '8px',
                     display: 'flex',
@@ -132,10 +133,11 @@ const Dashboard: React.FC<MyComponentProps> = ({ totalSpends }) => {
                         <AccountBalanceIcon sx={{ fontSize: { xs: '30px', md: '45px' }, color:"#2c3e50" ,":hover":{color:'#34495e'} }} />
                     </Box>
                 </Grid>
-                <Grid item xs={5} md={2.5} sx={{
+                <Grid item xs={5.5} md={2.8} sx={{
+                    // marginBottom:'.5rem',
                     border: '2px solid #E0E0E0',
                     backgroundColor: '#FFFFFF',
-                    width: { md: '300px', xs: '200px' },
+                    width: { md: '300px', xs: '230px' },
                     height: { xs: '6rem', md: '8rem' },
                     borderRadius: '8px',
                     display: 'flex',

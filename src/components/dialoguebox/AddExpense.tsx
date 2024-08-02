@@ -5,9 +5,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import AddIcon from '@mui/icons-material/Add';
-import { Input, MenuItem, Select, Typography } from '@mui/material';
+import { Input, MenuItem, Select, TextField, Typography, Grid } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
-import dummy from './../../dummyJson/category.json'
+import dummy from './../../dummyJson/category.json';
 
 const AddExpense = () => {
   const [open, setOpen] = React.useState(false);
@@ -26,15 +26,17 @@ const AddExpense = () => {
     <React.Fragment>
       <Button
         disableTouchRipple
+        size='small'
         sx={{
           color: '#34495e',
+          border: `1px solid ${theme.palette.divider}`,
           ':hover': { backgroundColor: '#2c3e50', color: '#ffffff' },
-          fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
-          padding: { xs: '6px 12px', sm: '8px 16px' }, // Responsive padding
+          fontSize: { xs: '14px', sm: '16px' },
+          padding: { xs: '8px 9px', md: '7px 9px' },
           display: 'flex',
           alignItems: 'center'
         }}
-        variant='text'
+        variant='outlined'
         onClick={handleClickOpen}
       >
         <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' } }} />
@@ -42,6 +44,7 @@ const AddExpense = () => {
           Add Expense
         </Typography>
       </Button>
+    
       <Dialog
         open={open}
         onClose={handleClose}
@@ -49,7 +52,7 @@ const AddExpense = () => {
         fullWidth
         sx={{
           '& .MuiDialog-paper': {
-            backgroundColor: 'white', // Dialog background color
+            backgroundColor: '#FFFFFF',
             borderRadius: '8px',
             padding: '16px',
             boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
@@ -58,59 +61,95 @@ const AddExpense = () => {
       >
         <DialogTitle
           sx={{
-
             color: '#2c3e50',
             textAlign: 'center',
             padding: '16px',
             borderRadius: '8px 8px 0 0',
-            fontSize: { xs: '20px', sm: '24px' } // Responsive font size
+            fontSize: { xs: '20px', sm: '24px' },
+            fontWeight: '500'
           }}
         >
-          Enter Amount
+          Add Your Expense
         </DialogTitle>
         <DialogContent
           sx={{
-            display: 'flex',
-            flexDirection:'column',
-            justifyContent: 'center',
             padding: '16px',
-            backgroundColor: 'white', // Dialog content background color
+            backgroundColor: '#FFFFFF',
             borderRadius: '0 0 8px 8px',
           }}
         >
-          <Input
-            disableUnderline
-            placeholder='Enter amount'
-            type='number'
-            sx={{
-              backgroundColor: 'white',
-              borderRadius: '8px',
-              paddingLeft: '10px',
-              border: `1px solid #2c3e50`, // Secondary color for border
-              width: '100%',
-              fontSize: { xs: '16px', sm: '18px' }, // Responsive font size
-
-            }}
-          />
-
-          <Select
-            variant='standard'
-            disableUnderline
-            defaultValue={0}
-            sx={{ backgroundColor: 'white',
-              borderRadius: '8px',
-              paddingLeft: '10px',
-              border: `1px solid #2c3e50`, // Secondary color for border
-              width: '100%',
-              fontSize: { xs: '16px', sm: '18px' }, }}
-            size='small'
-          >
-            {dummy.category.map((e)=>(
-               <MenuItem value={e}>{e}</MenuItem>
-            ))}
-           
-            
-          </Select>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Typography sx={{ marginBottom: '8px', color: '#20203F' }}>Amount</Typography>
+              <Input
+                disableUnderline
+                placeholder='Enter amount'
+                type='number'
+                sx={{
+                  backgroundColor: '#F5F5F5',
+                  borderRadius: '8px',
+                  paddingLeft: '10px',
+                  border: `1px solid #E0E0E0`,
+                  width: '100%',
+                  fontSize: { xs: '16px', sm: '18px' },
+                  marginBottom: '16px'
+                }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography sx={{ marginBottom: '8px', color: '#20203F' }}>Category</Typography>
+              <Select
+                variant='standard'
+                disableUnderline
+                defaultValue={0}
+                sx={{
+                  backgroundColor: '#F5F5F5',
+                  borderRadius: '8px',
+                  paddingLeft: '10px',
+                  border: `1px solid #E0E0E0`,
+                  width: '100%',
+                  fontSize: { xs: '16px', sm: '18px' },
+                  marginBottom: '16px'
+                }}
+                size='small'
+              >
+                {dummy.category.map((e, index) => (
+                  <MenuItem key={index} value={e}>{e}</MenuItem>
+                ))}
+              </Select>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography sx={{ marginBottom: '8px', color: '#20203F' }}>Date</Typography>
+              <Input
+                disableUnderline
+                type="date"
+                sx={{
+                  width: '100%',
+                  fontSize: { xs: '0.875rem', md: '1rem' },
+                  border: '1px solid #E0E0E0',
+                  borderRadius: '8px',
+                  padding: '10px',
+                  backgroundColor: '#F5F5F5',
+                  marginBottom: '16px'
+                }}
+                size='small'
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Typography sx={{ marginBottom: '8px', color: '#20203F' }}>Description</Typography>
+              <TextField
+                multiline
+                maxRows={3}
+                sx={{
+                  width: '100%',
+                  borderRadius: '8px',
+                  border: `1px solid #E0E0E0`,
+                  padding: '10px',
+                  backgroundColor: '#F5F5F5'
+                }}
+              />
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions
           sx={{
@@ -120,17 +159,23 @@ const AddExpense = () => {
           }}
         >
           <Button
-            onClick={handleClose}
+            disableTouchRipple
+            size='small'
             sx={{
-              color: '#2c3e50',
-              width: 'fit-content',
-              fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
-              ':hover': { backgroundColor: '#34495e' } // Modern Charcoal for hover
+              color: '#34495e',
+              border: `1px solid ${theme.palette.divider}`,
+              ':hover': { backgroundColor: '#2c3e50', color: '#ffffff' },
+              fontSize: { xs: '14px', sm: '16px' },
+              padding: { xs: '8px 9px', md: '7px 9px' },
+              display: 'flex',
+              alignItems: 'center'
             }}
+            variant='outlined'
+            onClick={handleClose}
           >
             <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' } }} />
             <Typography variant='button' sx={{ marginLeft: '8px' }}>
-              Add
+              Add Expense
             </Typography>
           </Button>
         </DialogActions>

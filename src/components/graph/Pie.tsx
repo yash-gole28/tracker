@@ -28,16 +28,25 @@ const Pie = () => {
         {
           data: amountData,
           paddingAngle: 2,
-          innerRadius: isSmallScreen ? 0 : 20 
+          highlightScope: { faded: 'global', highlighted: 'item' },
+          faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
+          innerRadius: isSmallScreen ? 0 : 20, // Reduce innerRadius on small screens
+          outerRadius: isSmallScreen ? 75 : 120 // Adjust outerRadius for better spacing
         }
       ]}
       colors={palette}
-      width={isSmallScreen ? 300 : 500} 
-      height={isSmallScreen ? 200 : 300} 
-      sx={{ 
-        fontSize: isSmallScreen ? '0.8rem' : '1rem'
+      width={isSmallScreen ? 300 : 500}
+      height={isSmallScreen ? 200 : 300}
+      sx={{
+        fontSize: isSmallScreen ? '0.7rem' : '1rem', // Further reduce font size on small screens
+        '& .MuiPieChart-label': {
+          fontSize: isSmallScreen ? '0.7rem' : '1rem', // Ensure label font size is consistent
+          padding: isSmallScreen ? '0.1rem' : '0.5rem' // Adjust padding for better spacing
+        },
+        '& .MuiPieChart-tooltip': {
+          fontSize: isSmallScreen ? '0.7rem' : '1rem' // Adjust tooltip font size
+        }
       }}
-   
     />
   );
 };

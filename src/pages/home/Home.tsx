@@ -22,18 +22,21 @@ const Home = () => {
   return (
     <Box sx={{ backgroundColor: '#F4F4F9', width: '100%', minHeight: '100vh' }}>
       <Navbar />
-      <Box sx={{ paddingTop: '85px' }}>
+      <Box sx={{ paddingTop: '85px', width:'90%',margin:'auto'}}>
         <Dashboard totalSpends={totalSpends} />
       </Box>
       <Box sx={{
         display: 'flex',
         justifyContent: 'center',
-        marginLeft: { xs: '0rem', md: '.7rem' },
+        // marginLeft: { xs: '0rem', md: '.7rem' },
         flexDirection: { xs: 'column', md: 'row' },
-        gap: '20px'
+        // gap: '20px'
+        width:'90%',
+        margin:'auto'
       }}>
         <Box sx={{
-          margin: '1rem',
+          margin: '.3rem .0rem',
+          marginRight:'.2rem',
           minHeight: { xs: '250px', md: '350px' },
           backgroundColor: '#FFFFFF',
           display: 'flex',
@@ -46,21 +49,24 @@ const Home = () => {
           <Chart />
         </Box>
         <Box sx={{
-          margin: '1rem',
+          margin: '.3rem .0rem',
+          marginLeft:'.2rem',
           backgroundColor: '#FFFFFF',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           border: '2px solid #E0E0E0',
           borderRadius: '8px',
-          width: { xs: '90vw', md: '35vw' },
+          width: { xs: '90vw', md: '38vw' },
           padding: '1rem'
         }}>
           <Pie />
         </Box>
       </Box>
       <Box sx={{
-        margin: '1.7rem',
+        // margin: '.3rem 1.6rem',
+        width:"90%",
+        margin:'auto',
         padding: '1rem',
         backgroundColor: '#FFFFFF',
         borderRadius: '8px',

@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import dummy from './../../dummyJson/data.json';
-import { Typography, useTheme, useMediaQuery } from '@mui/material';
+import { Typography, useTheme, useMediaQuery, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -26,27 +26,15 @@ const History = () => {
   const theme = useTheme(); 
   const arr:any = []
 
-  for(let i = 0 ;i<5 ; i++){
+  for(let i = 0 ;i<4 ; i++){
       arr.push(dummy.expenses[i])
   }
 
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        backgroundColor: 'white',
-        // border: `2px solid ${theme.palette.divider}`,
-        borderRadius: '8px',
-        width: '100%',
-        position:'relative',
-        // margin: 'auto',
-        padding: '1.4rem',
-        boxShadow: '0px 0px 0px solid rgb(255, 255, 255)',
-        overflowX: 'auto', // Ensures table is scrollable on small screens
-      }}
-    >
-      
-      <Typography
+    <>
+    <Box sx={{display:'flex', justifyContent:'space-between',mb:'1rem'}}>
+
+     <Typography
         variant="h6"
         sx={{
           textAlign:{xs:'start',md:'center'},
@@ -58,6 +46,32 @@ const History = () => {
       >
         Latest History
       </Typography>
+      <Button  sx={{
+          color: '#34495e',
+          border:  `1px solid ${theme.palette.divider}`,
+          ':hover': { backgroundColor: '#2c3e50', color: '#ffffff' },
+          fontSize: { xs: '14px', sm: '16px' }, // Responsive font size
+          padding:{xs:'8px 9px',md:'7px 9px'},
+          display: 'flex',
+          alignItems: 'center'
+        }} size='small' onClick={()=>router('/history')}>History</Button>
+    </Box>
+    <TableContainer
+      component={Paper}
+      sx={{
+        backgroundColor: 'white',
+        // border: `2px solid ${theme.palette.divider}`,
+        borderRadius: '8px',
+        width: '100%',
+        position:'relative',
+        // margin: 'auto',
+        padding: '1.4rem',
+        boxShadow: '0px 0px 0px solid rgb(255, 255, 255)',
+        overflowX: 'auto',
+      }}
+    >
+      
+     
      
       <Table>
         <TableHead>
@@ -176,8 +190,9 @@ const History = () => {
           ))}
         </TableBody>
       </Table>
-      <PrimaryButton onClick={()=>router('/history')} sx={{position:'absolute',top:'15px',right:'20px'}}>History</PrimaryButton>
+     
     </TableContainer>
+    </>
   );
 };
 
