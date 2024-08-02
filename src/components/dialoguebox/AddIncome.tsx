@@ -9,7 +9,7 @@ import { Input, MenuItem, Select, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
 import dummy from './../../dummyJson/category.json'
 
-const AddExpense = () => {
+const AddIncome = () => {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -141,4 +141,4 @@ const AddExpense = () => {
   );
 };
 
-export default AddExpense;
+export default AddIncome;

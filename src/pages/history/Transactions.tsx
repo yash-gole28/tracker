@@ -11,6 +11,7 @@ import { Box, Typography, useTheme, TextField, FormControl, InputLabel, Select, 
 import Navbar from '../../components/navbar/Navbar';
 import CloseIcon from '@mui/icons-material/Close';
 import { SelectChangeEvent } from '@mui/material/Select';
+import AddExpense from '../../components/dialoguebox/AddExpense';
 
 // Define or import the Expense type
 interface Expense {
@@ -41,19 +42,14 @@ const Transactions = () => {
     setSelectedCategory(event.target.value);
   };
 
-  const handleClickOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleClickOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    // Add form validation and submission logic here
-    console.log('Form Data:', formData);
-    handleClose();
-  };
 
   const filteredData = arr.filter((item) => {
     const matchesSearch =
@@ -126,15 +122,7 @@ const Transactions = () => {
                 ))}
               </Select></Box>
             {/* </FormControl> */}
-            <Button
-            disableElevation disableFocusRipple disableRipple
-              variant='contained'
-              color='primary'
-              onClick={handleClickOpen}
-              sx={{ width: '150px', fontSize: '0.875rem', padding: '8px' }}
-            >
-              Add Expense
-            </Button>
+           <AddExpense/>
           </Box>
         </Box>
 
@@ -257,60 +245,6 @@ const Transactions = () => {
         </Table>
       </TableContainer>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>
-          Add Expense
-          <IconButton
-            edge="end"
-            color="inherit"
-            onClick={handleClose}
-            aria-label="close"
-            sx={{ position: 'absolute', right: 8, top: 8, color: (theme) => theme.palette.grey[500] }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>
-          <TextField
-            margin="dense"
-            name="category"
-            label="Category"
-            fullWidth
-            variant="outlined"
-            value={formData.category}
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            name="date"
-            label="Date"
-            type="date"
-            fullWidth
-            variant="outlined"
-            value={formData.date}
-            onChange={handleInputChange}
-            InputLabelProps={{ shrink: true }}
-          />
-          <TextField
-            margin="dense"
-            name="amount"
-            label="Amount"
-            type="number"
-            fullWidth
-            variant="outlined"
-            value={formData.amount}
-            onChange={handleInputChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} color="primary">
-            Add
-          </Button>
-        </DialogActions>
-      </Dialog>
     </>
   );
 };

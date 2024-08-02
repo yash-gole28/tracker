@@ -16,6 +16,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function Draw() {
   const [open, setOpen] = React.useState(false);
@@ -28,7 +29,7 @@ export default function Draw() {
   const DrawerList = (
     <Box
       sx={{
-        width: 230,
+        width:{xs:'100vw', md:240},
         backgroundColor: '#34495e', // Modern Charcoal
         height: '100vh',
         color: '#ffffff', // White text
@@ -37,6 +38,14 @@ export default function Draw() {
       onClick={toggleDrawer(false)}
     >
       <List sx={{ paddingLeft: '1rem' }}>
+        <ListItem sx={{display:{xs:'flex',md:'none'}}} disablePadding>
+          <ListItemButton onClick={toggleDrawer(false)}>
+            <ListItemText primary='' />
+            <ListItemIcon>
+              <ArrowBackIcon sx={{ color: '#ffffff' }} />
+            </ListItemIcon>
+          </ListItemButton>
+        </ListItem>
         <ListItem disablePadding>
           <ListItemButton onClick={() => router('/')}>
             <ListItemIcon>
