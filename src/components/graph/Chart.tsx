@@ -5,16 +5,13 @@ import userData from './../../dummyJson/data.json';
 const Chart = () => {
   const [expenses, setExpenses] = useState<any>({ user: [] });
   
-  // Fetching data
+ 
   const spendsArray = userData.monthData.map(item => item.spends);
   
-  // Preparing the x-axis labels
+  
   const arr = userData.monthData.map((_, index) => String(index + 1));
   
-  // Optionally use useEffect if data needs to be fetched or updated dynamically
-  // useEffect(() => {
-  //   setExpenses(userData);
-  // }, []);
+ 
   
   return (
     <BarChart
@@ -31,7 +28,7 @@ const Chart = () => {
         height: '100%', 
         width: '100%',
         backgroundColor: 'white',
-        minHeight:{xs:'200px',md:'300px'}
+        minHeight:{xs:'250px',md:'300px'}
       }}
       xAxis={[
         {

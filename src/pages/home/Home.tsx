@@ -37,7 +37,7 @@ const Home = () => {
         <Box sx={{
           margin: '.3rem .0rem',
           marginRight:'.2rem',
-          minHeight: { xs: '250px', md: '350px' },
+          height: { xs: '250px', md: '350px' },
           backgroundColor: '#FFFFFF',
           display: 'flex',
           justifyContent: 'center',

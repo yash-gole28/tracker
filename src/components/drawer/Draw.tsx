@@ -74,7 +74,7 @@ export default function Draw() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/settings')}>
+          <ListItemButton onClick={() => router('/')}>
             <ListItemIcon>
               <SettingsIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>

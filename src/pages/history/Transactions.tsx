@@ -25,7 +25,7 @@ const Transactions = () => {
   const theme = useTheme();
   const [search, setSearch] = React.useState<string>('');
   const [selectedCategory, setSelectedCategory] = React.useState<string>('');
-  const [open, setOpen] = React.useState<boolean>(false);
+  // const [open, setOpen] = React.useState<boolean>(false);
   const [formData, setFormData] = React.useState<Omit<Expense, 'amountLeft'>>({
     category: '',
     date: '',
@@ -45,10 +45,10 @@ const Transactions = () => {
   // const handleClickOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormData(prevData => ({ ...prevData, [name]: value }));
-  };
+  // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = event.target;
+  //   setFormData(prevData => ({ ...prevData, [name]: value }));
+  // };
 
 
   const filteredData = arr.filter((item) => {

@@ -128,7 +128,24 @@ const AddExpense = () => {
                   fontSize: { xs: '0.875rem', md: '1rem' },
                   border: '1px solid #E0E0E0',
                   borderRadius: '8px',
-                  padding: '10px',
+                  padding: '3px 10px',
+                  backgroundColor: '#F5F5F5',
+                  marginBottom: '16px'
+                }}
+                size='small'
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Typography sx={{ marginBottom: '8px', color: '#20203F' }}>Bill</Typography>
+              <Input
+                disableUnderline
+                type="file"
+                sx={{
+                  width: '100%',
+                  fontSize: { xs: '0.875rem', md: '1rem' },
+                  border: '1px solid #E0E0E0',
+                  borderRadius: '8px',
+                  padding: '3px 10px',
                   backgroundColor: '#F5F5F5',
                   marginBottom: '16px'
                 }}
@@ -175,7 +192,7 @@ const AddExpense = () => {
           >
             <AddIcon sx={{ fontSize: { xs: '20px', sm: '24px' } }} />
             <Typography variant='button' sx={{ marginLeft: '8px' }}>
-              Add Expense
+              Add 
             </Typography>
           </Button>
         </DialogActions>
