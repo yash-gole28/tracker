@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { Grid, Input, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { useMediaQuery, useTheme } from '@mui/material';
 import dummy from './../../dummyJson/category.json'
+import toast from 'react-hot-toast';
 
 const AddIncome = () => {
   const [open, setOpen] = React.useState(false);
@@ -15,6 +16,7 @@ const AddIncome = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleClickOpen = () => {
+    toast.error('hello')
     setOpen(true);
   };
 

@@ -100,7 +100,7 @@ const Transactions = () => {
             History
           </Typography>
 
-          <Box sx={{ display: 'flex',flexDirection:{xs:'column',md:'row'}, gap: '20px',alignItems:{xs:'start',md:'center'}}}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: '20px', alignItems: { xs: 'start', md: 'center' } }}>
             <TextField
               placeholder='Search expenses'
               value={search}
@@ -109,20 +109,40 @@ const Transactions = () => {
               size='small'
               sx={{ minWidth: { xs: '120px', md: '200px' }, backgroundColor: '#fff' }}
             />
-            {/* <FormControl variant='standard' sx={{ minWidth: { xs: '150px', md: '200px' } }}> */}
-             <Box sx={{display:'flex',alignItems:'center'}}> <InputLabel>Category</InputLabel>
-              <Select
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-                size='small'
-              >
-                <MenuItem value=""><em>All Categories</em></MenuItem>
-                {uniqueCategories.map(category => (
-                  <MenuItem key={category} value={category}>{category}</MenuItem>
-                ))}
-              </Select></Box>
-            {/* </FormControl> */}
-           <AddExpense/>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              {/* <FormControl variant='outlined'>
+                <InputLabel id="demo-simple-select-label">Age</InputLabel>
+                <Select
+
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={selectedCategory}
+                  onChange={handleCategoryChange}
+                  size='small'
+                >
+                  <MenuItem value=""><em>All Categories</em></MenuItem>
+                  {uniqueCategories.map(category => (
+                    <MenuItem key={category} value={category}>{category}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl> */}
+              <FormControl size='small' sx={{minWidth:'200px'}} fullWidth>
+                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={selectedCategory}
+                  label="Age"
+                  onChange={handleCategoryChange}
+                >
+                  <MenuItem value=""><em>All Categories</em></MenuItem>
+                  {uniqueCategories.map(category => (
+                    <MenuItem key={category} value={category}>{category}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <AddExpense />
           </Box>
         </Box>
 

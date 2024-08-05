@@ -21,11 +21,14 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 export default function Draw() {
   const [open, setOpen] = React.useState(false);
   const router = useNavigate();
-
+  const getUser = localStorage.getItem('user')
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-
+  const Logout = ()=>{
+    localStorage.removeItem('user')
+    router('/login')
+  }
   const DrawerList = (
     <Box
       sx={{
@@ -59,7 +62,7 @@ export default function Draw() {
             <ListItemIcon>
               <AddIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
-            <ListItemText primary='Transactions' />
+            <ListItemText primary='History' />
           </ListItemButton>
         </ListItem>
       </List>
@@ -81,22 +84,23 @@ export default function Draw() {
             <ListItemText primary='Settings' />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/login')}>
-            <ListItemIcon>
-              <LoginIcon sx={{ color: '#ffffff' }} />
-            </ListItemIcon>
-            <ListItemText primary='Login' />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/')}>
+        {getUser ? <ListItem disablePadding>
+          <ListItemButton onClick={Logout}>
             <ListItemIcon>
               <LogoutIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
             <ListItemText primary='Logout' />
           </ListItemButton>
-        </ListItem>
+        </ListItem>: null}
+        {/* <ListItem disablePadding>
+           <ListItemButton onClick={() => router('/login')}>
+            <ListItemIcon>
+              <LoginIcon sx={{ color: '#ffffff' }} />
+            </ListItemIcon>
+            <ListItemText primary='Login' />
+          </ListItemButton>
+        </ListItem> */}
+        
       </List>
     </Box>
   );

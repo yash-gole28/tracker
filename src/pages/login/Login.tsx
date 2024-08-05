@@ -1,49 +1,94 @@
-import { Box, ButtonBase, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Button, InputBase } from '@mui/material';
+import { Box, Button, Input, Typography } from '@mui/material';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import toast from 'react-hot-toast';
 import Navbar from '../../components/navbar/Navbar';
+import { loginSchema } from '../../Schema';
 
 const Login = () => {
-  const router = useNavigate()
-  const [user, setUser] = useState({ username: '', email: '', password: '' });
-  const [allUsers, setAllUsers] = useState<any[]>([]);
+  const router = useNavigate();
 
-  // Handle input change
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [event.target.name]: event.target.value });
-    console.log(user)
+  type UserFormValues = z.infer<typeof loginSchema>;
+
+  // Handle form validation and submission
+  const { register, handleSubmit, formState: { errors } } = useForm<UserFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    }
+  });
+
+  const onSubmit = (data: UserFormValues) => {
+    const userDataString = localStorage.getItem('userData');
+
+    if (userDataString) {
+      const userData = JSON.parse(userDataString);
+
+      if (typeof userData === 'object' && userData !== null && 'email' in userData && 'password' in userData) {
+        if (userData.email === data.email && userData.password === data.password) {
+          localStorage.setItem('user', JSON.stringify(data));
+          router('/');
+        } else {
+          toast.error('Incorrect email or password');
+        }
+      } else {
+        toast.error('Invalid user data');
+      }
+    } else {
+      toast.error('No user data found');
+    }
   };
 
-  // Handle form submission
-  // const handleSubmit = () => {
-  //     setAllUsers(prevUsers => [...prevUsers, user]);
-  //     console.log(allUsers)
-
-  //     localStorage.setItem('user', JSON.stringify(allUsers));
-
-
-  //     setUser({ username: '', email: '', password: '' });
-  // };
   return (
-    <Box sx={{backgroundColor:'#F4F4F9', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+    <Box sx={{ backgroundColor: '#F4F4F9', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <Navbar />
-      <Box sx={{backgroundColor:'white',borderRadius:'10px',border:'1px solid rgb(238, 237, 235)',boxShadow:'0px 2px 2px rgb(147, 145, 133)',display:'flex',flexDirection:'column',padding:'2rem'}}>
-      <Typography variant='h6'sx={{marginBottom:'1.5rem'}}>Login</Typography>
-        <InputBase onChange={handleChange} value={user.email} placeholder='email' name='email' sx={{borderRadius:'8px',paddingLeft:'8px', marginBottom: '10px', width: '300px' ,backgroundColor:'white',border:'1px solid rgb(238, 237, 235)'}} />
-        <InputBase type='password' onChange={handleChange} value={user.password} placeholder='password' name='password'  sx={{borderRadius:'8px',paddingLeft:'8px', marginBottom: '10px', width: '300px' ,backgroundColor:'white',border:'1px solid rgb(238, 237, 235)'}} />
-        <Button variant='contained' sx={{backgroundColor:'#2c3e50', ':hover': { backgroundColor: '#2c3e50' }}} onClick={() => router('/')}>Submit</Button>
-        <Typography onClick={() => router('/signup')} sx={{ color: 'black', marginTop: '1.5rem' }}>
-          Don't have an acount ?
-        </Typography>
+      <Box sx={{ width: '100%', maxWidth: '500px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
+        <Typography variant='h5' sx={{ marginBottom: '20px', fontWeight: 'bold', fontSize: '1.5rem' }}>Login</Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography textAlign={'start'} variant='h6' sx={{ marginBottom: '10px', fontSize: '1rem' }}>Email</Typography>
+              <Input
+                {...register('email')}
+                type="email"
+                disableUnderline
+                sx={{ width: '100%', fontSize: '1rem', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                size='small'
+              />
+              {errors.email && <Typography sx={{ color: 'red', marginTop: '5px' }}>{errors.email.message}</Typography>}
+            </Box>
+
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography textAlign={'start'} variant='h6' sx={{ marginBottom: '10px', fontSize: '1rem' }}>Password</Typography>
+              <Input
+                {...register('password')}
+                type="password"
+                disableUnderline
+                sx={{ width: '100%', fontSize: '1rem', border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
+                size='small'
+              />
+              {errors.password && <Typography sx={{ color: 'red', marginTop: '5px' }}>{errors.password.message}</Typography>}
+            </Box>
+          </Box>
+          <Box sx={{ textAlign: 'center', marginTop: '20px' }}>
+            <Button
+              variant='contained'
+              sx={{ backgroundColor: '#2c3e50', ':hover': { backgroundColor: '#2c3e50' } }}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Box>
+        </form>
+        <Typography sx={{ margin: '10px 0px', textAlign: 'center', cursor: 'pointer' }} onClick={() => router('/signup')}>Forgot email or password?</Typography>
+        <Typography textAlign={'center'} onClick={() => router('/signup')}>Don't have an account?</Typography>
       </Box>
-
-
-      <div>
-        
-      </div>
     </Box>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

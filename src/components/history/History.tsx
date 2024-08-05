@@ -44,7 +44,7 @@ const History = () => {
           fontSize: { xs: '1rem', sm: '1.2rem' }, // Responsive font size
         }}
       >
-        Latest History
+        Latest Expense
       </Typography>
       <Button  sx={{
           color: '#34495e',
@@ -54,7 +54,7 @@ const History = () => {
           padding:{xs:'8px 9px',md:'7px 9px'},
           display: 'flex',
           alignItems: 'center'
-        }} size='small' onClick={()=>router('/history')}>History</Button>
+        }} size='small' onClick={()=>router('/history')}>See more</Button>
     </Box>
     <TableContainer
       component={Paper}

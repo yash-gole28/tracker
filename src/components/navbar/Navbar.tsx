@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Button, Toolbar } from '@mui/material';
 import Box from '@mui/material/Box';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -8,6 +8,20 @@ import Avatar from '@mui/material/Avatar'
 
 const Navbar = () => {
   const router = useNavigate();
+  const getUser = localStorage.getItem('user')
+  const [initial , setInitial] = useState<String>('')
+
+  const getInitial = ()=>{
+    if(getUser){
+      const userData = JSON.parse(getUser)
+      if(typeof userData == 'object' && userData !== null){
+          setInitial(userData.email[0])
+      }
+    }
+  }
+  useEffect(()=>{
+    getInitial()
+  },[])
 
   return (
     <Box>
@@ -21,7 +35,7 @@ const Navbar = () => {
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Draw />
           
-            <Avatar sx={{backgroundColor:'#ffffff', color:'#34495e' ,fontWeight:'bold'}}>Y</Avatar>
+            <Avatar sx={{backgroundColor:'#ffffff', color:'#34495e' ,fontWeight:'bold',textTransform:'capitalize'}}>{initial}</Avatar>
           
         </Toolbar>
       </AppBar>

@@ -6,17 +6,23 @@ import Chart from '../../components/graph/Chart';
 import History from '../../components/history/History';
 import Dashboard from '../../components/dashboard/Dashboard';
 import Pie from '../../components/graph/Pie';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Home = () => {
   const [data, setData] = useState<any>({ user: [] });
-  const date = new Date();
+  const route = useNavigate()
   const totalSpends = dummy.monthData.map(item => item.spends).reduce((total, value) => total + value);
-
+  const user = localStorage.getItem('user')
   useEffect(() => {
-    setData(dummy);
-    setTimeout(() => {
-      console.log(data?.user);
-    }, 1000);
+    if(user){
+      console.log(user)
+      setData(dummy);
+    }else{
+      toast('login first')
+      route('/login')
+    }
+   
   }, [data]);
 
   return (
