@@ -11,11 +11,6 @@
   /* background-color:  #CADCFC; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
 
 .makecenter{
   position: absolute; /* Makes the element position relative to its closest positioned ancestor */
@@ -31,4 +26,10 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.imp{
+  color: rgb(245, 64, 64);
+  font-size: 14px;
+  position: relative;
 }

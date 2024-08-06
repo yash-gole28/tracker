@@ -22,23 +22,23 @@ root.render(
         toastOptions={{
           // Define default options
           className: '',
-          duration: 5000,
+          duration: 2000,
           style: {
             background: '#363636',
             color: '#fff',
           },
           // Default options for specific types
           success: {
-            duration: 3000,
+            duration: 1000,
             style: {
-              background: 'green',
+              background: 'rgb(71, 192, 71)',
               color: 'white',
             },
           },
           error: {
-            duration: 3000,
+            duration: 1000,
             style: {
-              background: 'red',
+              background: 'rgb(243, 93, 93)',
               color: 'white',
             },
           },

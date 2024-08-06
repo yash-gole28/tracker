@@ -17,6 +17,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 import LoginIcon from '@mui/icons-material/Login';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import toast from 'react-hot-toast';
+import { ElevatorSharp } from '@mui/icons-material';
 
 export default function Draw() {
   const [open, setOpen] = React.useState(false);
@@ -28,6 +30,28 @@ export default function Draw() {
   const Logout = ()=>{
     localStorage.removeItem('user')
     router('/login')
+  }
+  const toProfile = ()=>{
+    if(!getUser){
+      toast.error('login to access profile')
+    }else{
+      router('/profile')
+    }
+  }
+  const toHistory = ()=>{
+    if(!getUser){
+      toast.error('login to access History')
+    }else{
+      router('/history')
+    }
+  }
+  const toDashBoard = ()=>{
+    if(!getUser){
+      toast.error('login to access dashboard')
+
+    }else{
+      router('/')
+    }
   }
   const DrawerList = (
     <Box
@@ -50,7 +74,7 @@ export default function Draw() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/')}>
+          <ListItemButton onClick={toDashBoard}>
             <ListItemIcon>
               <HomeIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
@@ -58,7 +82,7 @@ export default function Draw() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/history')}>
+          <ListItemButton onClick={toHistory}>
             <ListItemIcon>
               <AddIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>
@@ -69,7 +93,7 @@ export default function Draw() {
       <Divider sx={{ backgroundColor: '#ffffff' }} />
       <List sx={{ paddingLeft: '1rem' }}>
         <ListItem disablePadding>
-          <ListItemButton onClick={() => router('/profile')}>
+          <ListItemButton onClick={toProfile}>
             <ListItemIcon>
               <PermIdentityIcon sx={{ color: '#ffffff' }} />
             </ListItemIcon>

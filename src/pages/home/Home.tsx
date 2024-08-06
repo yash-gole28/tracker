@@ -19,7 +19,7 @@ const Home = () => {
       console.log(user)
       setData(dummy);
     }else{
-      toast('login first')
+      toast.error('login first')
       route('/login')
     }
    

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,6 +12,8 @@ import Navbar from '../../components/navbar/Navbar';
 import CloseIcon from '@mui/icons-material/Close';
 import { SelectChangeEvent } from '@mui/material/Select';
 import AddExpense from '../../components/dialoguebox/AddExpense';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 // Define or import the Expense type
 interface Expense {
@@ -31,6 +33,17 @@ const Transactions = () => {
     date: '',
     amount: 0
   });
+  const user = localStorage.getItem('user')
+  const route = useNavigate()
+  useEffect(() => {
+    if(user){
+      console.log(user)
+    }else{
+      toast.error('login first')
+      route('/login')
+    }
+   
+  }, []);
 
   const arr = dummy.expenses;
 
@@ -42,13 +55,6 @@ const Transactions = () => {
     setSelectedCategory(event.target.value);
   };
 
-  // const handleClickOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-
-  // const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const { name, value } = event.target;
-  //   setFormData(prevData => ({ ...prevData, [name]: value }));
-  // };
 
 
   const filteredData = arr.filter((item) => {
