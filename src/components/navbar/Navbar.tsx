@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
 import Box from '@mui/material/Box';
-import MenuIcon from '@mui/icons-material/Menu';
-import { useNavigate } from 'react-router-dom';
-import Draw from '../drawer/Draw';
-import Avatar from '@mui/material/Avatar'
+import Draw from '../drawer/Draw'; // Adjust the path as necessary
+interface ToggleState{
+  setOpenState:any
+}
+const Navbar: React.FC<ToggleState> = ({setOpenState}) => {
+  const getUser = localStorage.getItem('user');
+  const getUserName = localStorage.getItem('userData');
+  const [initial, setInitial] = useState<string>('');
+  const [userName, setUserName] = useState<string>('');
+  // const [openValue , setOpenValue] = useState<boolean>(true)
 
-const Navbar = () => {
-  // const router = useNavigate();
-  const getUser = localStorage.getItem('user')
-  const getUserName = localStorage.getItem('userData')
-  const [initial , setInitial] = useState<String>('')
-  const [userName, setuserName] = useState<String>('')
-  const getInitial = ()=>{
-    if(getUser && getUserName){
-      const userData = JSON.parse(getUser)
-      const name = JSON.parse(getUserName)
-      if(typeof userData == 'object' && userData !== null){
-          setInitial(userData.email[0])
-          setuserName(name.username)
+  const getInitial = () => {
+    if (getUser && getUserName) {
+      const userData = JSON.parse(getUser);
+      const name = JSON.parse(getUserName);
+      if (typeof userData === 'object' && userData !== null) {
+        setInitial(userData.email[0]);
+        setUserName(name.username);
       }
     }
-  }
-  useEffect(()=>{
-    getInitial()
-  },[])
+  };
+
+  useEffect(() => {
+    getInitial();
+  }, []);
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex' }}>
       <AppBar
         sx={{
           backgroundColor: '#34495e', // Modern Charcoal
@@ -36,13 +37,15 @@ const Navbar = () => {
         }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Draw />
-          <Box sx={{display:'flex',alignItems:'center',gap:'15px'}}>
-
-            <Avatar sx={{backgroundColor:'#ffffff', color:'#34495e' ,fontWeight:'bold',textTransform:'capitalize'}}>{initial}</Avatar>
-            {getUser? <Typography sx={{textTransform:'capitalize',fontWeight:'500'}}>{userName}</Typography> : null}
+          <Draw  setOpenValue={setOpenState}/>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <Avatar
+              sx={{ backgroundColor: '#ffffff', color: '#34495e', fontWeight: 'bold', textTransform: 'capitalize' }}
+            >
+              {initial}
+            </Avatar>
+            {getUser ? <Typography sx={{ textTransform: 'capitalize', fontWeight: '500' }}>{userName}</Typography> : null}
           </Box>
-          
         </Toolbar>
       </AppBar>
     </Box>

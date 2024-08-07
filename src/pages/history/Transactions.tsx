@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,7 +9,6 @@ import Paper from '@mui/material/Paper';
 import dummy from './../../dummyJson/data.json';
 import { Box, Typography, useTheme, TextField, FormControl, InputLabel, Select, MenuItem, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import Navbar from '../../components/navbar/Navbar';
-import CloseIcon from '@mui/icons-material/Close';
 import { SelectChangeEvent } from '@mui/material/Select';
 import AddExpense from '../../components/dialoguebox/AddExpense';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +25,7 @@ interface Expense {
 const Transactions = () => {
   const theme = useTheme();
   const [search, setSearch] = React.useState<string>('');
+  const [openState , setOpenState] = useState<boolean>()
   const [selectedCategory, setSelectedCategory] = React.useState<string>('');
   // const [open, setOpen] = React.useState<boolean>(false);
   const [formData, setFormData] = React.useState<Omit<Expense, 'amountLeft'>>({
@@ -72,9 +72,15 @@ const Transactions = () => {
   const uniqueCategories = Array.from(new Set(arr.map(expense => expense.category)));
 
   return (
-    <>
-      <Navbar />
+    <Box sx={{width:'100%',display:'flex',justifyContent:'end'}}>
+      {/* <Navbar /> */}
+      <Box sx={{width:{xs:'100%',md:openState?'calc(100% - 240px)':'calc(100% - 50px)'}, transition: theme.transitions.create('width', {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.standard,
+            })}}>
 
+      <Navbar setOpenState={setOpenState}/>
+      
       <TableContainer
         component={Paper}
         sx={{
@@ -270,8 +276,8 @@ const Transactions = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
-    </>
+      </Box>
+    </Box>
   );
 };
 

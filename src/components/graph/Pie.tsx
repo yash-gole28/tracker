@@ -36,7 +36,7 @@ const Pie = () => {
       ]}
       colors={palette}
       width={isSmallScreen ? 300 : 500}
-      height={isSmallScreen ? 200 : 300}
+      height={isSmallScreen ? 250 : 300}
       sx={{
         fontSize: isSmallScreen ? '0.7rem' : '1rem', // Further reduce font size on small screens
         '& .MuiPieChart-label': {

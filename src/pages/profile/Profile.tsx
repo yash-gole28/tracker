@@ -6,6 +6,7 @@ import AddIncome from '../../components/dialoguebox/AddIncome';
 import AddExpense from '../../components/dialoguebox/AddExpense';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 
 
 interface information {
@@ -22,6 +23,8 @@ interface information {
 const Profile = () => {
     const user = localStorage.getItem('user')
     const userInfo = localStorage.getItem('userData')
+    const theme = useTheme();
+    const [openState , setOpenState] = useState<boolean>()
     const [userData , setuserData] = useState<information>({firstName: '',
         middleName: '',
         lastName: '',
@@ -44,9 +47,16 @@ const Profile = () => {
      
     }, []);
     return (
-        <Box sx={{ backgroundColor: '#F4F4F9', minHeight: '100vh' }}>
-            <Navbar />
-            <Box sx={{ display: 'flex', paddingTop: '80px', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'center', gap: '20px',paddingBottom:'2rem' }}>
+        <Box sx={{ backgroundColor: '#F4F4F9', minHeight: '100vh',display:'flex',justifyContent:'end' }}>
+            <Box sx={{width:{xs:'100%',md:openState?'calc(100% - 240px)':'calc(100% - 50px)'}, transition: theme.transitions.create('width', {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.standard,
+            })}}>
+
+            
+            <Navbar setOpenState={setOpenState}/>
+            {/* <Navbar /> */}
+            <Box sx={{width:'100%', display: 'flex', paddingTop: '80px', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'center', gap: '20px',paddingBottom:'2rem' }}>
                 <Box sx={{ width: { xs: '100%', md: '30%' }, maxWidth: '400px' }}>
                     <Box sx={{ padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF', textAlign: 'center' }}>
                         <AccountCircleIcon sx={{ fontSize: { xs: '100px', md: '120px' }, color: '#B0BEC5' }} />
@@ -169,7 +179,7 @@ const Profile = () => {
                     </Box>
                 </Box>
             </Box>
-           
+            </Box>
         </Box>
     );
 }

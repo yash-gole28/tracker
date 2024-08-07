@@ -8,10 +8,13 @@ import Dashboard from '../../components/dashboard/Dashboard';
 import Pie from '../../components/graph/Pie';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useTheme } from '@mui/material/styles';
 
 const Home = () => {
   const [data, setData] = useState<any>({ user: [] });
+  const [openState , setOpenState] = useState<boolean>()
   const route = useNavigate()
+  const theme = useTheme();
   const totalSpends = dummy.monthData.map(item => item.spends).reduce((total, value) => total + value);
   const user = localStorage.getItem('user')
   useEffect(() => {
@@ -26,8 +29,12 @@ const Home = () => {
   }, [data]);
 
   return (
-    <Box sx={{ backgroundColor: '#F4F4F9', width: '100%', minHeight: '100vh' }}>
-      <Navbar />
+    <Box sx={{ backgroundColor: '#F4F4F9', width: '100%', minHeight: '100vh' ,display:'flex',justifyContent:'end'}}>
+      <Box sx={{width:{xs:'100%',md:openState?'calc(100% - 240px)':'calc(100% - 50px)'}, transition: theme.transitions.create('width', {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.standard,
+            })}}>
+      <Navbar setOpenState={setOpenState}/>
       <Box sx={{ paddingTop: '85px', width:'90%',margin:'auto'}}>
         <Dashboard totalSpends={totalSpends} />
       </Box>
@@ -80,6 +87,8 @@ const Home = () => {
       }}>
         <History />
       </Box>
+      </Box>
+     
     </Box>
   );
 };

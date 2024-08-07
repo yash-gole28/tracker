@@ -60,6 +60,7 @@ const Signup = () => {
                 <Input
                   {...register('firstName')}
                   disableUnderline
+                  placeholder='Enter your Firstname'
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                 />
                 <Box sx={{ height: '15px' }}>
@@ -73,6 +74,7 @@ const Signup = () => {
                 <Input
                   {...register('middleName')}
                   disableUnderline
+                  placeholder='Enter your Middlename'
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                 />
                 <Box sx={{ height: '15px' }}>
@@ -85,6 +87,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Last Name <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('lastName')}
+                  placeholder='Enter your Lastname'
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                 />
@@ -98,6 +101,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Username <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('username')}
+                  placeholder='Enter your Username'
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                 />
@@ -112,6 +116,7 @@ const Signup = () => {
                 <Input
                   {...register('email')}
                   type="email"
+                  placeholder='Enter your Email'
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                 />
@@ -125,6 +130,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Phone Number <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('phoneNumber')}
+                  placeholder='Enter your Phone number'
                   type="number"
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -139,6 +145,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Date of Birth <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('dob')}
+                  
                   type="date"
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -157,6 +164,7 @@ const Signup = () => {
                   render={({ field }) => (
                     <Select
                       {...field}
+                      
                       defaultValue=""
                       variant='standard'
                       disableUnderline
@@ -178,6 +186,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Password <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('password')}
+                  placeholder='Enter your Password'
                   endAdornment={<InputAdornment position="end">{visible?<VisibilityOffIcon onClick={toggleVisibility}/>:<VisibilityIcon onClick={toggleVisibility}/>}</InputAdornment>}
                   type={visibleType}
                   disableUnderline
@@ -193,6 +202,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Confirm Password <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('confirmPassword')}
+                  placeholder='Enter your Password'
                   endAdornment={<InputAdornment position="end">{visible2?<VisibilityOffIcon onClick={toggleVisibility2}/>:<VisibilityIcon onClick={toggleVisibility2}/>}</InputAdornment>}
                   type={visibleType2}
                   disableUnderline
