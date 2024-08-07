@@ -12,7 +12,7 @@ import { useTheme } from '@mui/material/styles';
 
 const Home = () => {
   const [data, setData] = useState<any>({ user: [] });
-  const [openState , setOpenState] = useState<boolean>()
+  const [openState , setOpenState] = useState<boolean>(true)
   const route = useNavigate()
   const theme = useTheme();
   const totalSpends = dummy.monthData.map(item => item.spends).reduce((total, value) => total + value);
@@ -35,7 +35,7 @@ const Home = () => {
               duration: theme.transitions.duration.standard,
             })}}>
       <Navbar setOpenState={setOpenState}/>
-      <Box sx={{ paddingTop: '85px', width:'90%',margin:'auto'}}>
+      <Box sx={{ paddingTop: '85px', width:'95%',margin:'auto'}}>
         <Dashboard totalSpends={totalSpends} />
       </Box>
       <Box sx={{
@@ -44,7 +44,7 @@ const Home = () => {
         // marginLeft: { xs: '0rem', md: '.7rem' },
         flexDirection: { xs: 'column', md: 'row' },
         // gap: '20px'
-        width:'90%',
+        width:'95%',
         margin:'auto'
       }}>
         <Box sx={{
@@ -78,7 +78,7 @@ const Home = () => {
       </Box>
       <Box sx={{
         // margin: '.3rem 1.6rem',
-        width:"90%",
+        width:"95%",
         margin:'auto',
         padding: '1rem',
         backgroundColor: '#FFFFFF',

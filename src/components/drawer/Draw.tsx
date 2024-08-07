@@ -27,7 +27,7 @@ interface drawerOpen{
   setOpenValue:any
 }
 const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
-  const [open, setOpen] = React.useState(false); 
+  const [open, setOpen] = React.useState(true); 
   const theme = useTheme();
   const router = useNavigate();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -94,15 +94,15 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
               <ListItemIcon>
                 <ArrowBackIcon sx={{ color: '#ffffff' }} />
               </ListItemIcon>
-             {open ?  <ListItemText primary="Close Menu" />:null}
+             {open ?  <ListItemText primary="" />:null}
             </ListItemButton>
           </ListItem>
         :<ListItem disablePadding>
         <ListItemButton onClick={handleDrawerToggle}>
           <ListItemIcon>
-            <ArrowForwardIcon sx={{ color: '#ffffff' }} />
+            <MenuIcon sx={{ color: '#ffffff' }} />
           </ListItemIcon>
-          <ListItemText primary="Close Menu" />
+          <ListItemText primary="" />
         </ListItemButton>
       </ListItem>}
         <ListItem disablePadding>

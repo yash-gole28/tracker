@@ -36,8 +36,13 @@ const Navbar: React.FC<ToggleState> = ({setOpenState}) => {
           color: '#ffffff', // White
         }}
       >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Draw  setOpenValue={setOpenState}/>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between',width:'100vw'}}>
+   
+         <Draw  setOpenValue={setOpenState}/>
+      
+         {/* <Typography>Expense Tracker</Typography> */}
+        
+ 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
             <Avatar
               sx={{ backgroundColor: '#ffffff', color: '#34495e', fontWeight: 'bold', textTransform: 'capitalize' }}

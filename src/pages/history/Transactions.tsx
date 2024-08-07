@@ -25,7 +25,7 @@ interface Expense {
 const Transactions = () => {
   const theme = useTheme();
   const [search, setSearch] = React.useState<string>('');
-  const [openState , setOpenState] = useState<boolean>()
+  const [openState , setOpenState] = useState<boolean>(true)
   const [selectedCategory, setSelectedCategory] = React.useState<string>('');
   // const [open, setOpen] = React.useState<boolean>(false);
   const [formData, setFormData] = React.useState<Omit<Expense, 'amountLeft'>>({

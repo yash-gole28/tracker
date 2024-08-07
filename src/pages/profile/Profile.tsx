@@ -24,7 +24,7 @@ const Profile = () => {
     const user = localStorage.getItem('user')
     const userInfo = localStorage.getItem('userData')
     const theme = useTheme();
-    const [openState , setOpenState] = useState<boolean>()
+    const [openState , setOpenState] = useState<boolean>(true)
     const [userData , setuserData] = useState<information>({firstName: '',
         middleName: '',
         lastName: '',
