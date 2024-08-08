@@ -41,6 +41,7 @@ const Home = () => {
       <Box sx={{
         display: 'flex',
         justifyContent: 'center',
+        alignItems:{xs:'center', md:'normal'},
         // marginLeft: { xs: '0rem', md: '.7rem' },
         flexDirection: { xs: 'column', md: 'row' },
         // gap: '20px'

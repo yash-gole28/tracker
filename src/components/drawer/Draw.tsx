@@ -20,6 +20,8 @@ import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import MenuIcon from '@mui/icons-material/Menu';
+import Confirmation from '../dialoguebox/Confirmation';
+import { useBooleanContext } from '../Context/DrawerContext';
 
 
 
@@ -30,20 +32,17 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
   const [open, setOpen] = React.useState(true); 
   const theme = useTheme();
   const router = useNavigate();
+  const {value ,setValue} = useBooleanContext()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const getUser = localStorage.getItem('user');
   const drawerWidth = 240
   const handleDrawerToggle = () => {
     setOpenValue(!open)
     setOpen(!open);
+    setValue(!open)
   };
 
-  const Logout = () => {
-    setOpenValue(!open)
-    setOpen(!open);
-    localStorage.removeItem('user');
-    router('/login');
-  };
+ 
 
   const toProfile = () => {
     if (!getUser) {
@@ -51,8 +50,9 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
     } else {
       router('/profile');
     }
-    setOpenValue(!open)
-    setOpen(!open);
+    // setOpenValue(!open)
+    // setOpen(!open);
+    // setValue(!open)
   };
 
   const toHistory = () => {
@@ -61,8 +61,9 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
     } else {
       router('/history');
     }
-    setOpenValue(!open)
-    setOpen(!open);
+    // setOpenValue(!open)
+    // setOpen(!open);
+    // setValue(!open)
   };
 
   const toDashBoard = () => {
@@ -71,8 +72,9 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
     } else {
       router('/');
     }
-    setOpenValue(!open)
-    setOpen(!open);
+    // setOpenValue(!open)
+    // setOpen(!open);
+    // setValue(!open)
   };
 
   const DrawerList = (
@@ -142,9 +144,10 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
         </ListItem>
         {getUser ? (
           <ListItem disablePadding>
-            <ListItemButton onClick={Logout}>
+            <ListItemButton>
               <ListItemIcon>
-                <LogoutIcon sx={{ color: '#ffffff' }} />
+                {/* <LogoutIcon sx={{ color: '#ffffff' }} /> */}
+                <Confirmation/>
               </ListItemIcon>
               <ListItemText primary='Logout' />
             </ListItemButton>
@@ -164,7 +167,7 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width:{xs:'100vw',md:open?drawerWidth:'50px'},
+            width:{xs:'200px',md:open?drawerWidth:'50px'},
             boxSizing: 'border-box',
             backgroundColor: '#34495e',overflow:'hidden' ,
             transition: theme.transitions.create('width', {

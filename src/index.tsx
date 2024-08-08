@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { BooleanContextProvider } from './components/Context/DrawerContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -44,7 +45,9 @@ root.render(
           },
         }}
       />
-      <App />
+      <BooleanContextProvider>
+        <App />
+      </BooleanContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

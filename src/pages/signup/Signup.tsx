@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { signupSchema } from '../../Schema';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import Navbar from '../../components/navbar/Navbar';
+// import Navbar from '../../components/navbar/Navbar';
 
 type SignupFormData = z.infer<typeof signupSchema>;
 

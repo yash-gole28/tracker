@@ -5,7 +5,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import HomeIcon from '@mui/icons-material/Home';
 
 const NotFound: React.FC = () => {
-    const [timer, setTimer] = useState<number>(3);
+    const [timer, setTimer] = useState<number>(1);
     const navigate = useNavigate();
 
     useEffect(() => {

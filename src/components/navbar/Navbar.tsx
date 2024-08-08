@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Draw from '../drawer/Draw'; // Adjust the path as necessary
+import { useBooleanContext } from '../Context/DrawerContext';
 interface ToggleState{
   setOpenState:any
 }
@@ -11,6 +12,7 @@ const Navbar: React.FC<ToggleState> = ({setOpenState}) => {
   const [initial, setInitial] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
   // const [openValue , setOpenValue] = useState<boolean>(true)
+  const {value , setValue} = useBooleanContext()
 
   const getInitial = () => {
     if (getUser && getUserName) {
@@ -37,12 +39,14 @@ const Navbar: React.FC<ToggleState> = ({setOpenState}) => {
         }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between',width:'100vw'}}>
-   
+          <Box>
          <Draw  setOpenValue={setOpenState}/>
+          {value ? null : <Typography>Expense Tracker</Typography>}
+          </Box>
       
          {/* <Typography>Expense Tracker</Typography> */}
         
- 
+          {/* {value ? 'hello' : 'byee'} */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
             <Avatar
               sx={{ backgroundColor: '#ffffff', color: '#34495e', fontWeight: 'bold', textTransform: 'capitalize' }}
