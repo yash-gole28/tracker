@@ -1,6 +1,7 @@
 const apiList = {
-  login: "/users/login",
-  register: "/users/register",
+  login: "/auth/login",
+  register: "/auth/register",
+  currentUser:"/auth/currentUser",
   getAllUser: "/users/getAllUser",
 };
 

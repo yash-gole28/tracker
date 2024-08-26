@@ -25,7 +25,7 @@ export default function Confirmation() {
   };
 
   const Logout = () => {
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setOpen(false);
     router('/login');
   };

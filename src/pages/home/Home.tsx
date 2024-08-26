@@ -9,6 +9,8 @@ import Pie from '../../components/graph/Pie';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useTheme } from '@mui/material/styles';
+import { apiList } from '../../apiList';
+import { API } from '../../network 1';
 
 const Home = () => {
   const [data, setData] = useState<any>({ user: [] });
@@ -16,17 +18,29 @@ const Home = () => {
   const route = useNavigate()
   const theme = useTheme();
   const totalSpends = dummy.monthData.map(item => item.spends).reduce((total, value) => total + value);
-  const user = localStorage.getItem('user')
-  useEffect(() => {
-    if(user){
-      console.log(user)
-      setData(dummy);
-    }else{
-      toast.error('login first')
-      route('/login')
-    }
+  const user = localStorage.getItem('token')
+  // useEffect(() => {
+  //   if(user){
+  //     console.log(user)
+  //     setData(dummy);
+  //   }else{
+  //     toast.error('login first')
+  //     route('/login')
+  //   }
    
-  }, [data]);
+  // }, [data]);
+  useEffect(()=>{
+    const currentUser =async ()=>{
+      const url = apiList.currentUser
+      const response = await API.get(url)
+      // console.log(response.data)
+      if(response.data.success){
+        console.log(response.data)
+        toast.success(response.data.getUser.username)
+      }
+    }
+    currentUser()
+  },[])
 
   return (
     <Box sx={{ backgroundColor: '#F4F4F9', width: '100%', minHeight: '100vh' ,display:'flex',justifyContent:'end'}}>

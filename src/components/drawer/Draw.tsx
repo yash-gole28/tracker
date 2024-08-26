@@ -34,7 +34,7 @@ const Draw:React.FC<drawerOpen> = ({setOpenValue}) => {
   const router = useNavigate();
   const {value ,setValue} = useBooleanContext()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const getUser = localStorage.getItem('user');
+  const getUser = localStorage.getItem('token');
   const drawerWidth = 240
   const handleDrawerToggle = () => {
     setOpenValue(!open)

@@ -7,13 +7,17 @@ import { z } from 'zod';
 import { signupSchema } from '../../Schema';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import toast from 'react-hot-toast';
+import { API } from '../../network 1';
+import { apiList } from '../../apiList';
+import axios from 'axios';
 // import Navbar from '../../components/navbar/Navbar';
 
 type SignupFormData = z.infer<typeof signupSchema>;
 
 const Signup = () => {
-  const [visible , setVisible] = useState<boolean>(false)
-  const [visible2 , setVisible2] = useState<boolean>(false)
+  const [visible, setVisible] = useState<boolean>(false)
+  const [visible2, setVisible2] = useState<boolean>(false)
   const navigate = useNavigate();
   const visibleType = visible ? 'text' : 'password'
   const visibleType2 = visible2 ? 'text' : 'password'
@@ -33,16 +37,25 @@ const Signup = () => {
     }
   });
 
-  const toggleVisibility = ()=>{
+  const toggleVisibility = () => {
     setVisible(!visible)
   }
-  const toggleVisibility2 = ()=>{
+  const toggleVisibility2 = () => {
     setVisible2(!visible2)
   }
 
-  const onSubmit = (data: SignupFormData) => {
-    console.log(data);
-    localStorage.setItem('userData', JSON.stringify(data));
+  const onSubmit = async (data: SignupFormData) => {
+    console.log(data)
+    try {
+      const url = apiList.register
+      const response = await API.post(url, { data })
+      if(response){
+        console.log(response.success)
+      }
+    } catch (error:any) {
+      console.log(error)
+      // toast.error(error.response.data.message)
+    }
     navigate('/login');
   };
   const router = useNavigate()
@@ -145,7 +158,7 @@ const Signup = () => {
                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Date of Birth <sup className='imp'>*</sup></Typography>
                 <Input
                   {...register('dob')}
-                  
+
                   type="date"
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -164,15 +177,15 @@ const Signup = () => {
                   render={({ field }) => (
                     <Select
                       {...field}
-                      
+
                       defaultValue=""
                       variant='standard'
                       disableUnderline
                       sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
                     >
-                      <MenuItem value="Male">Male</MenuItem>
-                      <MenuItem value="Female">Female</MenuItem>
-                      <MenuItem value="Others">Others</MenuItem>
+                      <MenuItem value="male">Male</MenuItem>
+                      <MenuItem value="female">Female</MenuItem>
+                      <MenuItem value="others">Others</MenuItem>
                     </Select>
                   )}
                 />
@@ -187,7 +200,7 @@ const Signup = () => {
                 <Input
                   {...register('password')}
                   placeholder='Enter your Password'
-                  endAdornment={<InputAdornment position="end">{visible?<VisibilityOffIcon onClick={toggleVisibility}/>:<VisibilityIcon onClick={toggleVisibility}/>}</InputAdornment>}
+                  endAdornment={<InputAdornment position="end">{visible ? <VisibilityOffIcon onClick={toggleVisibility} /> : <VisibilityIcon onClick={toggleVisibility} />}</InputAdornment>}
                   type={visibleType}
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -203,7 +216,7 @@ const Signup = () => {
                 <Input
                   {...register('confirmPassword')}
                   placeholder='Enter your Password'
-                  endAdornment={<InputAdornment position="end">{visible2?<VisibilityOffIcon onClick={toggleVisibility2}/>:<VisibilityIcon onClick={toggleVisibility2}/>}</InputAdornment>}
+                  endAdornment={<InputAdornment position="end">{visible2 ? <VisibilityOffIcon onClick={toggleVisibility2} /> : <VisibilityIcon onClick={toggleVisibility2} />}</InputAdornment>}
                   type={visibleType2}
                   disableUnderline
                   sx={{ height: '38px', width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}

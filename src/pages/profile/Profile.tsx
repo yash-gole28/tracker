@@ -7,6 +7,7 @@ import AddExpense from '../../components/dialoguebox/AddExpense';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
 
 interface information {
@@ -22,9 +23,10 @@ interface information {
     confirmPassword: string
 }
 const Profile = () => {
-    const user = localStorage.getItem('user')
-    const userInfo = localStorage.getItem('userData')
+    const user = localStorage.getItem('token')
+    // const userInfo = localStorage.getItem('userData')
     const theme = useTheme();
+    const [editable , setEditable] = useState<boolean>(false)
     const [openState, setOpenState] = useState<boolean>(true)
     const [userData, setuserData] = useState<information>({
         firstName: '',
@@ -38,16 +40,21 @@ const Profile = () => {
         password: '',
         confirmPassword: ''
     })
+
+    const makeEditable = ()=>{
+        setEditable(!editable)
+        console.log(editable)
+    }
     const route = useNavigate()
     useEffect(() => {
-        if (user && userInfo) {
-            let data = JSON.parse(userInfo)
-            setuserData(data)
-        } else {
-            toast.error('login first')
-            route('/login')
-        }
-
+        // if (user) {
+        //     // let data = JSON.parse(userInfo)
+        //     // setuserData(data)
+        // } else {
+        //     toast.error('login first')
+        //     route('/login')
+        // }
+        console.log(user)
     }, []);
     return (
         <Box sx={{ backgroundColor: '#F4F4F9', minHeight: '100vh', display: 'flex', justifyContent: 'end' }}>
@@ -99,11 +106,13 @@ const Profile = () => {
                         </Box>
                     </Box>
                     <Box sx={{ textAlign: 'start', width: { xs: '100%', md: '70%' },m:"1rem", padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
-                        <Typography variant='h5' sx={{ marginBottom: '20px', fontWeight: 'bold', fontSize: { xs: '1rem', md: '1.5rem' } }}>Edit Profile</Typography>
+                        <Typography variant='h5' sx={{ marginBottom: '20px', fontWeight: 'bold', fontSize: { xs: '1rem', md: '1.5rem' } }}>Edit Profile 
+                            <EditOutlinedIcon onClick={makeEditable}  sx={{fontSize:'15px',border:'1px solid black'}}/></Typography>
                         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, flexWrap: 'wrap', gap: '20px' }}>
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Username <sup className='imp'>*</sup></Typography>
                                 <Input
+                                    disabled={!editable}
                                     value={userData.username}
                                     disableUnderline
                                     sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -113,6 +122,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Email <sup className='imp'>*</sup></Typography>
                                 <Input
+                                    disabled
                                     value={userData.email}
                                     disableUnderline
                                     type="email"
@@ -123,6 +133,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Phone Number <sup className='imp'>*</sup></Typography>
                                 <Input
+                                    disabled={!editable}
                                     value={userData.phoneNumber}
                                     disableUnderline
                                     type="number"
@@ -133,6 +144,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Date of Birth <sup className='imp'>*</sup></Typography>
                                 <Input
+                                    disabled
                                     value={userData.dob}
                                     disableUnderline
                                     type="date"
@@ -143,6 +155,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Gender <sup className='imp'>*</sup></Typography>
                                 <Select
+                                    disabled
                                     variant='standard'
                                     disableUnderline
                                     defaultValue={0}
@@ -157,6 +170,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Address line 1 <sup className='imp'>*</sup></Typography>
                                 <Input
+                                    disabled={!editable}
                                     disableUnderline
                                     type="text"
                                     sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -166,6 +180,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Address line 2</Typography>
                                 <Input
+                                    disabled={!editable}
                                     disableUnderline
                                     type="text"
                                     sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}
@@ -175,6 +190,7 @@ const Profile = () => {
                             <Box sx={{ flex: '1 1 calc(50% - 20px)', display: 'flex', flexDirection: 'column' }}>
                                 <Typography variant='h6' sx={{ marginBottom: '10px', fontSize: { xs: '0.875rem', md: '1rem' } }}>Postal Code <sup className='imp'>*</sup></Typography>
                                 <Input
+                                    disabled={!editable}
                                     disableUnderline
                                     type="number"
                                     sx={{ width: '100%', fontSize: { xs: '0.875rem', md: '1rem' }, border: '1px solid #E0E0E0', borderRadius: '8px', padding: '10px', backgroundColor: '#F5F5F5' }}

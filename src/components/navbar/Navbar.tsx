@@ -39,7 +39,7 @@ const Navbar: React.FC<ToggleState> = ({setOpenState}) => {
         }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between',width:'100vw'}}>
-          <Box>
+          <Box sx={{width:'fit-content'}}>
          <Draw  setOpenValue={setOpenState}/>
           {value ? null : <Typography>Expense Tracker</Typography>}
           </Box>
@@ -53,7 +53,7 @@ const Navbar: React.FC<ToggleState> = ({setOpenState}) => {
             >
               {initial}
             </Avatar>
-            {getUser ? <Typography sx={{ textTransform: 'capitalize', fontWeight: '500' }}>{userName}</Typography> : null}
+            {getUser ? <Typography sx={{ textTransform: 'capitalize', fontWeight: '500' ,marginRight:'10px'}}>{userName}</Typography> : null}
           </Box>
         </Toolbar>
       </AppBar>

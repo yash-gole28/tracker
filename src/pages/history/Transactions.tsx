@@ -33,7 +33,7 @@ const Transactions = () => {
     date: '',
     amount: 0
   });
-  const user = localStorage.getItem('user')
+  const user = localStorage.getItem('token')
   const route = useNavigate()
   useEffect(() => {
     if(user){
