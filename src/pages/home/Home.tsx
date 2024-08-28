@@ -13,7 +13,7 @@ import { apiList } from '../../apiList';
 import { API } from '../../network 1';
 
 const Home = () => {
-  const [data, setData] = useState<any>({ user: [] });
+  // const [data, setData] = useState<any>({ user: [] });
   const [openState , setOpenState] = useState<boolean>(true)
   const route = useNavigate()
   const theme = useTheme();
@@ -31,13 +31,20 @@ const Home = () => {
   // }, [data]);
   useEffect(()=>{
     const currentUser =async ()=>{
-      const url = apiList.currentUser
+      try{
+        const url = apiList.currentUser
       const response = await API.get(url)
       // console.log(response.data)
       if(response.data.success){
         console.log(response.data)
         toast.success(response.data.getUser.username)
       }
+      }catch(error:any){
+        toast.error("invalid token or expired token")
+        localStorage.removeItem('token')
+        route('/login')
+      }
+      
     }
     currentUser()
   },[])

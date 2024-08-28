@@ -7,6 +7,7 @@ import Signup from './pages/signup/Signup';
 import Profile from './pages/profile/Profile';
 import Transactions from './pages/history/Transactions';
 import NotFound from './pages/notFound/NotFound';
+import AddProduct from './pages/addProduct/AddProduct';
 // import AddIncome from './pages/income/AddIncome';
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/profile' element={<Profile/>} />
         <Route path='/history' element={<Transactions/>} />
+        <Route path='/product' element={<AddProduct/>} />
         
         {/* <Route path='/income' element={<AddIncome/>} /> */}
       </Routes>

@@ -62,6 +62,7 @@ const Signup = () => {
   return (
     <Box sx={{ backgroundColor: '#F4F4F9', minHeight: '100vh' }}>
       {/* <Navbar /> */}
+      
       <Box sx={{ display: 'flex', paddingTop: '20px', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'center', gap: '20px', paddingBottom: '2rem' }}>
         <Box sx={{ textAlign: 'start', width: { xs: '100%', md: '70%' }, maxWidth: '800px', padding: '20px', borderRadius: '8px', border: '1px solid #E0E0E0', backgroundColor: '#FFFFFF' }}>
           <Typography variant='h5' sx={{ marginBottom: '20px', fontWeight: 'bold', fontSize: { xs: '1rem', md: '1.5rem' } }}>Create Your Account</Typography>
