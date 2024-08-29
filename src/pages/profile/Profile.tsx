@@ -1,11 +1,11 @@
-import React, { useEffect, useState, ChangeEvent } from 'react';
+import React, { useEffect, useState} from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import { Box, Input, MenuItem, Select, Typography ,SelectChangeEvent, Button } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIncome from '../../components/dialoguebox/AddIncome';
 import AddExpense from '../../components/dialoguebox/AddExpense';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { apiList } from '../../apiList';
@@ -28,7 +28,7 @@ interface Information {
 }
 
 const Profile = () => {
-  const user = localStorage.getItem('token');
+  // const user = localStorage.getItem('token');
   const theme = useTheme();
   const [editable, setEditable] = useState<boolean>(false);
   const [openState, setOpenState] = useState<boolean>(true);
@@ -83,7 +83,7 @@ const Profile = () => {
     }
   }
 
-  const route = useNavigate();
+  // const route = useNavigate();
 
   useEffect(() => {
     const currentUser = async () => {

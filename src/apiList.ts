@@ -5,7 +5,9 @@ const apiList = {
   getAllUser: "/users/getAllUser",
   getUserData:'/auth/userData',
   updateUserData:'/auth/updateUserData',
-  addProduct:'/product/addProduct'
+  addProduct:'/product/addProduct',
+  getProduct :'/product/getProduct',
+  updateProduct :'/product/updateProduct',
 };
 
 export { apiList };

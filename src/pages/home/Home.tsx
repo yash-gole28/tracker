@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
 import dummy from './../../dummyJson/data.json';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import Chart from '../../components/graph/Chart';
 import History from '../../components/history/History';
 import Dashboard from '../../components/dashboard/Dashboard';
@@ -18,17 +18,8 @@ const Home = () => {
   const route = useNavigate()
   const theme = useTheme();
   const totalSpends = dummy.monthData.map(item => item.spends).reduce((total, value) => total + value);
-  const user = localStorage.getItem('token')
-  // useEffect(() => {
-  //   if(user){
-  //     console.log(user)
-  //     setData(dummy);
-  //   }else{
-  //     toast.error('login first')
-  //     route('/login')
-  //   }
-   
-  // }, [data]);
+  // const user = localStorage.getItem('token')
+  
   useEffect(()=>{
     const currentUser =async ()=>{
       try{

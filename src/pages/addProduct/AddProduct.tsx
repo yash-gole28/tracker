@@ -10,13 +10,12 @@ import {
     FormControl,
     InputLabel,
     FormHelperText,
-    FormControlLabel,
-    Checkbox,
     SelectChangeEvent
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { API } from '../../network 1';
 import { apiList } from '../../apiList';
+import { useNavigate } from 'react-router-dom';
 
 // Define the data structure interface
 interface DataStructure {
@@ -27,6 +26,7 @@ interface DataStructure {
     inStock: boolean;
     images: string[]; // Changed from string to string[]
     brand: string;
+    tags:string[];
     id: string;
 }
 
@@ -40,14 +40,16 @@ const AddProduct = () => {
         inStock: false,
         images: [], // Initialize as an empty array
         brand: '',
+        tags:[],
         id: '66cc5937ab4695ef56aadf32',
     });
     const [categories, setCategories] = useState<string[]>(['Electronics', 'Clothing', 'Accessories']); // Example categories
     const theme = useTheme();
+    const router = useNavigate()
 
     // Handle input changes
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value, type } = event.target;
+        const { name, value } = event.target;
 
         setProductData((prevState) => ({
             ...prevState,
@@ -73,6 +75,15 @@ const AddProduct = () => {
             images: imageArray
         }));
     };
+    const handleTagChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        // Split value by comma to handle multiple image URLs
+        const tagArray = value.split(',').map(url => url.trim());
+        setProductData((prevState) => ({
+            ...prevState,
+            tags: tagArray
+        }));
+    };
 
     // Handle form submission
     const onSubmit = async () => {
@@ -81,7 +92,7 @@ const AddProduct = () => {
             const url = apiList.addProduct;
             const response = await API.post(url, { data: productData });
             if (response.success) {
-                console.log(response.data);
+                router('/update',{state:{title:'Update Data'}})
             }
         } catch (error) {
             console.error(error);
@@ -167,6 +178,14 @@ const AddProduct = () => {
             name="images"
             value={productData.images.join(', ')} // Display array as comma-separated string
             onChange={handleImageChange}
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="tags(comma separated)"
+            name="tags"
+            value={productData.tags.join(', ')} // Display array as comma-separated string
+            onChange={handleTagChange}
           />
           {/* <FormControlLabel
             control={
